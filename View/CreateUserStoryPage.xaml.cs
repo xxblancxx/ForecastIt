@@ -23,12 +23,12 @@ namespace Forecast.it.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CreateUserStory : Page
+    public sealed partial class CreateUserStoryPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public CreateUserStory()
+        public CreateUserStoryPage()
         {
             this.InitializeComponent();
 
@@ -107,5 +107,104 @@ namespace Forecast.it.View
         }
 
         #endregion
+        private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = sender as MenuFlyoutItem;
+
+            switch (item.Name)
+            {
+                case "userstory":
+                    this.Frame.Navigate(typeof(ChooseProjectPage));
+                   
+                    //
+                    break;
+
+                case "task":
+                   
+                    break;
+                case "project":
+                    //
+                    break;
+            }
+        }
+
+        private void Option_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SettingPage));
+        }
+
+        private void Txt_tile_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_title.Text = "";
+
+            // throw new NotImplementedException();
+        }
+
+        private void Txt_description_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_description.Text = "";
+
+            // throw new NotImplementedException();
+        }
+        private void Txt_estimate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_estimate.Text = "";
+
+            // throw new NotImplementedException();
+        }
+
+
+        private void Txt_epic_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_epic.Text = "";
+
+            // throw new NotImplementedException();
+        }
+       
+       
+        private void Txt_owner_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_owner.Text = "";
+
+            // throw new NotImplementedException();
+        }
+
+       
+        private void Txt_acceptance_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_acceptance.Text = "";
+
+            // throw new NotImplementedException();
+        }
+
+        private void Txt_type_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_type.Text = "";
+
+            // throw new NotImplementedException();
+        }
+
+        private void Txt_sprint_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_sprint.Text = "";
+
+            // throw new NotImplementedException();
+        }
+
+        private void Txt_status_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_status.Text = "";
+
+            // throw new NotImplementedException();
+        }
+        private void Txt_tags_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txt_tag.Text = "";
+
+            // throw new NotImplementedException();
+        }
+
+      
+
     }
 }

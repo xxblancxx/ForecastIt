@@ -116,6 +116,9 @@
     <Compile Include="View\AllDevelopersListPage.xaml.cs">
       <DependentUpon>AllDevelopersListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChooseProjectPage.xaml.cs">
+      <DependentUpon>ChooseProjectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateProjectPage.xaml.cs">
       <DependentUpon>CreateProjectPage.xaml</DependentUpon>
     </Compile>
@@ -125,8 +128,8 @@
     <Compile Include="View\CreateUserPage.xaml.cs">
       <DependentUpon>CreateUserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CreateUserStory.xaml.cs">
-      <DependentUpon>CreateUserStory.xaml</DependentUpon>
+    <Compile Include="View\CreateUserStoryPage.xaml.cs">
+      <DependentUpon>CreateUserStoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ListOfDevelopersInProject.xaml.cs">
       <DependentUpon>ListOfDevelopersInProject.xaml</DependentUpon>
@@ -142,6 +145,9 @@
     </Compile>
     <Compile Include="View\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewProjectDetails.xaml.cs">
+      <DependentUpon>ViewProjectDetails.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +188,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ChooseProjectPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\CreateProjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,9 +204,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CreateUserStory.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="View\CreateUserStoryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ListOfDevelopersInProject.xaml">
       <SubType>Designer</SubType>
@@ -215,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewProjectDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
