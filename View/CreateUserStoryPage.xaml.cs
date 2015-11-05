@@ -17,6 +17,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+using Forecast.it.Model;
+using Forecast.it.ViewModel;
 
 namespace Forecast.it.View
 {
@@ -31,6 +33,16 @@ namespace Forecast.it.View
         public CreateUserStoryPage()
         {
             this.InitializeComponent();
+
+            var cmbtype = new UserStoryTypeViewModel();
+            cmb_type.ItemsSource = cmbtype.UserStoryTypes;
+
+
+            var cmbsprint = new SprintViewModel();
+            cmb_sprint.ItemsSource = cmbsprint.Sprints;
+
+            var cmbstatus = new ScrumStageViewModel();
+            cmb_status.ItemsSource = cmbstatus.ScrumStages;
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -98,6 +110,8 @@ namespace Forecast.it.View
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+
+
             this.navigationHelper.OnNavigatedTo(e);
         }
 
@@ -115,12 +129,12 @@ namespace Forecast.it.View
             {
                 case "userstory":
                     this.Frame.Navigate(typeof(ChooseProjectPage));
-                   
+
                     //
                     break;
 
                 case "task":
-                   
+
                     break;
                 case "project":
                     //
@@ -128,10 +142,7 @@ namespace Forecast.it.View
             }
         }
 
-        private void Option_Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(SettingPage));
-        }
+
 
         private void Txt_tile_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -160,16 +171,16 @@ namespace Forecast.it.View
 
             // throw new NotImplementedException();
         }
-       
-       
-        private void Txt_owner_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_owner.Text = "";
 
-            // throw new NotImplementedException();
-        }
 
-       
+        //private void Txt_owner_GotFocus(object sender, RoutedEventArgs e)
+        //{
+        //    txt_owner.Text = "";
+
+        //    // throw new NotImplementedException();
+        //}
+
+
         private void Txt_acceptance_GotFocus(object sender, RoutedEventArgs e)
         {
             txt_acceptance.Text = "";
@@ -177,26 +188,7 @@ namespace Forecast.it.View
             // throw new NotImplementedException();
         }
 
-        private void Txt_type_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_type.Text = "";
 
-            // throw new NotImplementedException();
-        }
-
-        private void Txt_sprint_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_sprint.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-        private void Txt_status_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_status.Text = "";
-
-            // throw new NotImplementedException();
-        }
         private void Txt_tags_GotFocus(object sender, RoutedEventArgs e)
         {
             txt_tag.Text = "";
@@ -204,7 +196,35 @@ namespace Forecast.it.View
             // throw new NotImplementedException();
         }
 
-      
+
+
+
+        private void OnFlyoutSetingButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem settingitem = sender as MenuFlyoutItem;
+
+            switch (settingitem.Name)
+            {
+                case "projectsetting":
+                    //
+                    break;
+
+                case "administration":
+                    break;
+                case "usersetting":
+                    //
+                    break;
+                case "support":
+                    break;
+                case "aboutforecast":
+                    break;
+                case "logout":
+                    break;
+
+
+            }
+        }
+
 
     }
 }
