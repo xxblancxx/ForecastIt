@@ -138,17 +138,36 @@ namespace Forecast.it.View
             }
         }
 
-        private void Option_Button_Click(object sender, RoutedEventArgs e)
+        private void OnFlyoutSetingButtonClicked(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(SettingPage));
+            MenuFlyoutItem settingitem = sender as MenuFlyoutItem;
+
+            switch (settingitem.Name)
+            {
+                case "projectsetting":
+                    //
+                    break;
+
+                case "administration":
+                    break;
+                case "usersetting":
+                    //
+                    break;
+                case "support":
+                    break;
+                case "aboutforecast":
+                    break;
+                case "logout":
+                    break;
+
+
+            }
         }
 
-        
 
-        
 
-     
 
-  
+
+
     }
 }

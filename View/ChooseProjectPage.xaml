@@ -28,40 +28,46 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid>
-            <StackPanel Grid.Row="0" Margin="19,0,0,0">
-                <Grid>
-                    <Button Height="66"   Margin="147,0,0,2" RenderTransformOrigin="0.917,-0.147" Width="100">
-                        <Button.Flyout>
-                          
-                                <MenuFlyout  >
-                                    <MenuFlyoutItem x:Name="userstory" Text="UserStory" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
-                                    <MenuFlyoutItem x:Name="task" Text="Task" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
-                                    <MenuFlyoutItem x:Name="project" Text="Project" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
-                                </MenuFlyout>
-                            
-                            
-                        </Button.Flyout>
+        <Grid Grid.Row="0"  >
+            <Image Source="/Image/PageLogo.jpg" Height="63" HorizontalAlignment="Left" Width="131" VerticalAlignment="Center"/>
+            <Button Height="66" Width="100" HorizontalAlignment="Center">
+                <Button.Flyout>
+
+                    <MenuFlyout  >
+                        <MenuFlyoutItem x:Name="userstory" Text="UserStory" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
+                        <MenuFlyoutItem x:Name="task" Text="Task" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
+                        <MenuFlyoutItem x:Name="project" Text="Project" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
+                    </MenuFlyout>
 
 
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Image Source="/Image/CreateNew.jpg"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                    <Image Source="/Image/PageLogo.jpg" Height="63" Margin="-15,0,265,5"/>
-                    <Button Height="59" Click="Option_Button_Click" Margin="292,1,-20,8" RenderTransformOrigin="0.917,-0.147" Width="100">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Image Source="/Image/OptionButton.jpg"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Grid>
+                </Button.Flyout>
 
-            </StackPanel>
 
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Image/CreateNew.jpg"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Height="59" RenderTransformOrigin="0.917,-0.147" Width="85" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button.Flyout>
+                    <MenuFlyout  >
+                        <MenuFlyoutItem x:Name="projectsetting" Text="ProjectSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="administration" Text="Administration" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="usersetting" Text="UserSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="support" Text="Support" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="aboutforecast" Text="AboutForecast" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="logout" Text="Logout" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+
+
+                    </MenuFlyout>
+                </Button.Flyout>
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Image/OptionButton.jpg"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
 
 

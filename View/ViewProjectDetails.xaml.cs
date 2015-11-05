@@ -45,7 +45,7 @@ namespace Forecast.it.View
             switch (item.Name)
             {
                 case "userstory":
-                    this.Frame.Navigate(typeof(ChooseProjectPage));
+                    this.Frame.Navigate(typeof (ChooseProjectPage));
 
                     //
                     break;
@@ -59,82 +59,31 @@ namespace Forecast.it.View
             }
         }
 
-        private void Option_Button_Click(object sender, RoutedEventArgs e)
+        private void OnFlyoutSetingButtonClicked(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(SettingPage));
+            MenuFlyoutItem settingitem = sender as MenuFlyoutItem;
+
+            switch (settingitem.Name)
+            {
+                case "projectsetting":
+                    //
+                    break;
+
+                case "administration":
+                    break;
+                case "usersetting":
+                    //
+                    break;
+                case "support":
+                    break;
+                case "aboutforecast":
+                    break;
+                case "logout":
+                    break;
+
+
+            }
         }
 
-        private void Txt_tile_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_title.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-        private void Txt_description_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_description.Text = "";
-
-            // throw new NotImplementedException();
-        }
-        private void Txt_estimate_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_estimate.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-
-        private void Txt_epic_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_epic.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-
-        private void Txt_owner_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_owner.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-
-        private void Txt_acceptance_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_acceptance.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-        private void Txt_type_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_type.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-        private void Txt_sprint_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_sprint.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-        private void Txt_status_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_status.Text = "";
-
-            // throw new NotImplementedException();
-        }
-        private void Txt_tags_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txt_tag.Text = "";
-
-            // throw new NotImplementedException();
-        }
-
-    
     }
 }
