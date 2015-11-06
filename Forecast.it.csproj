@@ -92,6 +92,7 @@
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SingletonCommon.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Infrastructure\RouteCommand.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -99,6 +100,7 @@
     </Compile>
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\ScrumStage.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="ViewModel\ScrumStageViewModel.cs" />
     <Compile Include="Model\Sprint.cs" />
