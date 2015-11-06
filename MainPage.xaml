@@ -5,9 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:ViewModel="using:Forecast.it.ViewModel"
     x:Class="Forecast.it.MainPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <ViewModel:LoginViewModel/>
+    </Page.DataContext>
 
     <Grid Background="#FF2E1F3C" Margin="0" >
         <Grid.RowDefinitions>
@@ -27,9 +32,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="Username" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Height" Grid.Column="1" Grid.ColumnSpan="3" FontSize="21.333" PlaceholderText="Username"/>
+        <TextBox x:Name="Username" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Height" Grid.Column="1" Grid.ColumnSpan="3" FontSize="21.333" PlaceholderText="Username" Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Image x:Name="Image_Logo_jpg" Grid.ColumnSpan="3" Grid.RowSpan="2" Source="Image/Logo.jpg" Grid.Row="1" Grid.Column="1" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Button x:Name="Login" Content="Login" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" Background="#FF61BA9C">
+        <Button x:Name="Login" Content="Login" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" Background="#FF61BA9C" Command="{Binding LoginCommand, Mode=OneWay}">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
                     <Core:NavigateToPageAction TargetPage="Forecast.it.View.ProjectListPage"/>
@@ -43,6 +48,6 @@
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </Button>
-        <PasswordBox x:Name="passwordBox" d:LayoutOverrides="Width" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Password"/>
+        <PasswordBox x:Name="passwordBox" d:LayoutOverrides="Width" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Password" Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Page>

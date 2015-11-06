@@ -23,12 +23,12 @@ namespace Forecast.it.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CreateUserStory : Page
+    public sealed partial class ChooseProjectPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
-        public CreateUserStory()
+        int id;
+        public ChooseProjectPage()
         {
             this.InitializeComponent();
 
@@ -36,7 +36,7 @@ namespace Forecast.it.View
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
-
+  
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
         /// </summary>
@@ -107,5 +107,67 @@ namespace Forecast.it.View
         }
 
         #endregion
+
+        private void Next_Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (CmbProject.SelectedItem != null)
+                id = Convert.ToInt32(CmbProject.SelectedValue);
+            (App.Current as App).project_id = id;
+            this.Frame.Navigate(typeof (CreateUserStoryPage));
+        }
+
+        private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = sender as MenuFlyoutItem;
+
+            switch (item.Name)
+            {
+                case "userstory":
+                    this.Frame.Navigate(typeof(ChooseProjectPage));
+                    
+                    //
+                    break;
+
+                case "task":
+                   
+                    break;
+                case "project":
+                    //
+                    break;
+            }
+        }
+
+        private void OnFlyoutSetingButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem settingitem = sender as MenuFlyoutItem;
+
+            switch (settingitem.Name)
+            {
+                case "projectsetting":
+                    //
+                    break;
+
+                case "administration":
+                    break;
+                case "usersetting":
+                    //
+                    break;
+                case "support":
+                    break;
+                case "aboutforecast":
+                    break;
+                case "logout":
+                    break;
+
+
+            }
+        }
+
+
+
+
+
+
     }
 }
