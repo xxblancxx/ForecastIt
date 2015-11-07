@@ -53,57 +53,10 @@ namespace Forecast.it
             // this event is handled for you.
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Click(object sender, RoutedEventArgs e)
         {
-            //(App.Current as App).username = txt_name.Text;
-            //(App.Current as App).password = txt_name.Password;
-
-
-            using (var client = new HttpClient())
-                 {
-                    
-                    client.BaseAddress = new Uri((App.Current as App).BaseAddress);
-
-                    var byteArray = Encoding.UTF8.GetBytes((App.Current as App).username + ":" + (App.Current as App).password);
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-
-                    //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    HttpResponseMessage response = client.GetAsync("users").Result;
-
-
-                     if (response.IsSuccessStatusCode)
-                     {
-                         this.Frame.Navigate(typeof (MainPage));
-
-                     }
-                     else
-                     {
-                         var msg=new MessageDialog("Wrong Username or Password");
-                         msg.ShowAsync();
-                     }
-
-                 }
-
-                 }
-
-      
-
-        //private void Txt_name_OnGotFocus_GotFocus(object sender, RoutedEventArgs e)
-        //{
-        //    txt_name.Text = "";
-
-        //    // throw new NotImplementedException();
-        //}
-
-        //private void Txt_pass_OnGotFocus_GotFocus(object sender, RoutedEventArgs e)
-        //{
-        //    txt_pass.Password = "";
-
-
-        //    // throw new NotImplementedException();
-        //}
-
-        
+            (App.Current as App).username = Username.Text;
+            (App.Current as App).password = passwordBox.Password;
+        }
     }
 }
