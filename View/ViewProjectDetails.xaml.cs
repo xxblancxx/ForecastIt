@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Forecast.it.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,6 +26,14 @@ namespace Forecast.it.View
         public ViewProjectDetails()
         {
             this.InitializeComponent();
+
+            var projectdeatils= new ProjectViewModel();
+            var projectstage = projectdeatils.Project.projectStatus;
+            var projectowner = projectdeatils.Project.projectOwner;
+            var projectestimator = projectdeatils.Project.projectEstimator;
+            var projectmanager = projectdeatils.Project.projectManager;
+
+
         }
 
         /// <summary>
