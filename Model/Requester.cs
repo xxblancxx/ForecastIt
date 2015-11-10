@@ -40,7 +40,13 @@ namespace Forecast.it.Model
                             _singleton.CurrentPageView.Navigate(typeof (ProjectListPage));
                             return true;
                         }
-                        return false;
+                        else
+                        {
+                            var msg = new MessageDialog("Wrong Username or Password");
+                            msg.ShowAsync();
+                            return false;
+                        }
+                        
                     }
                     catch (JsonException e)
                     {
