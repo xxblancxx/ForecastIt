@@ -33,6 +33,9 @@ namespace Forecast.it.View
             var projectestimator = projectdeatils.Project.projectEstimator;
             var projectmanager = projectdeatils.Project.projectManager;
 
+           
+
+
 
         }
 
