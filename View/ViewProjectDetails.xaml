@@ -64,9 +64,26 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="32,37.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Project :" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,26.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Project :" VerticalAlignment="Top" Width="123" FontSize="30" TextAlignment="Left"/>
+        <TextBlock HorizontalAlignment="Left" Margin="182,26.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="name"   VerticalAlignment="Top" Height="30" Width="132" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,137.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Projec Stage" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,178.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="stage 1" VerticalAlignment="Top" Height="30" Width="98" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="207,137.167,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30" Height="36" Width="182">
+        	<Run Text="Overall status"/>
+        	<LineBreak/>
+        	<Run/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="207,181.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Status OK" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,314.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Userstory count :" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="281,314.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="95" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="27,395.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Project Owner:" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="268,404.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,436.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Project Manager" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="268,438.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,467.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Project Planner" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="268,476.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="20"/>
 
         <!--TODO: Content should be placed within the following grid-->
-        
+
     </Grid>
 </Page>
