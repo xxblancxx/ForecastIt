@@ -9,7 +9,14 @@ namespace Forecast.it.Common
 {
     class SingletonCommon
     {
-        public static SingletonCommon SingletonInstance { get; private set; }
+        private static SingletonCommon _singletonInstance = new SingletonCommon();
+
+        public static SingletonCommon SingletonInstance
+        {
+            get { return _singletonInstance; }
+            private set { _singletonInstance = value; }
+        }
+
         public string CurrentUsername { get; set; }
         public string CurrentPassword { get; set; }
         public Frame CurrentPageView { get; set; }
