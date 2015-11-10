@@ -111,6 +111,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\SprintViewModel.cs" />
     <Compile Include="ViewModel\TagViewModel.cs" />
+    <Compile Include="ViewModel\TaskViewModel.cs" />
     <Compile Include="ViewModel\UserStoryTypeViewModel.cs" />
     <Compile Include="ViewModel\UserStoryViewModel.cs" />
     <Compile Include="View\AllDevelopersListPage.xaml.cs">
