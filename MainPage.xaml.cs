@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Forecast.it.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 using Forecast.it.View;
@@ -35,6 +36,7 @@ namespace Forecast.it
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
+            SingletonCommon.SingletonInstance.CurrentPageView = Frame;
         }
 
         /// <summary>
@@ -53,10 +55,6 @@ namespace Forecast.it
             // this event is handled for you.
         }
 
-        private void Click(object sender, RoutedEventArgs e)
-        {
-            (App.Current as App).username = Username.Text;
-            (App.Current as App).password = passwordBox.Password;
-        }
+      
     }
 }

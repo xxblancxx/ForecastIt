@@ -35,19 +35,9 @@
         <TextBox x:Name="Username" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Height" Grid.Column="1" Grid.ColumnSpan="3" FontSize="21.333" PlaceholderText="Username" Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Image x:Name="Image_Logo_jpg" Grid.ColumnSpan="3" Grid.RowSpan="2" Source="Image/Logo.jpg" Grid.Row="1" Grid.Column="1" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Button x:Name="Login" Content="Login" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" Background="#FF61BA9C" Command="{Binding LoginCommand, Mode=OneWay}">
-            <Interactivity:Interaction.Behaviors>
-                <Core:EventTriggerBehavior EventName="Click">
-                    <Core:NavigateToPageAction TargetPage="Forecast.it.View.ProjectListPage"/>
-                </Core:EventTriggerBehavior>
-            </Interactivity:Interaction.Behaviors>
         </Button>
         <Button x:Name="CreateUser" Content="Create User" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="6" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" Background="#FF61BA9C">
-            <Interactivity:Interaction.Behaviors>
-                <Core:EventTriggerBehavior EventName="Click">
-                    <Core:NavigateToPageAction TargetPage="Forecast.it.View.CreateUserPage"/>
-                </Core:EventTriggerBehavior>
-            </Interactivity:Interaction.Behaviors>
-        </Button>
+            </Button>
         <PasswordBox x:Name="passwordBox" d:LayoutOverrides="Width" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Password" Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Page>
