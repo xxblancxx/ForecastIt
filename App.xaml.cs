@@ -29,11 +29,9 @@ namespace Forecast.it
     {
         private TransitionCollection transitions;
         public int project_id { get; set; }
-      
-        public string BaseAddress = "https://api.forecast.it/api/v1/";
-
-        public string username { get; set; }
-        public string password { get; set; }
+        public readonly string password;
+        public readonly string username;
+        public readonly string BaseAddress = "https://api.forecast.it/api/v1/";
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
