@@ -28,8 +28,10 @@ namespace Forecast.it
     {
         private TransitionCollection transitions;
         public int project_id { get; set; }
-     
-   
+        public readonly string password;
+        public readonly string username;
+        public readonly string BaseAddress = "https://api.forecast.it/api/v1/";
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
