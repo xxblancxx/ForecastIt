@@ -37,7 +37,7 @@ namespace Forecast.it.Model
                         var response = client.GetAsync("").Result;
                         if (response.IsSuccessStatusCode)
                         {
-                            _singleton.CurrentPageView.Navigate(typeof (ProjectListPage));
+                            _singleton.CurrentPageView.Frame.Navigate(typeof (ProjectListPage));
                             return true;
                         }
                         else

@@ -36,7 +36,7 @@ namespace Forecast.it
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
-            SingletonCommon.SingletonInstance.CurrentPageView = Frame;
+            SingletonCommon.SingletonInstance.CurrentPageView = this;
         }
 
         /// <summary>

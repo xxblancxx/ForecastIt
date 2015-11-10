@@ -19,7 +19,7 @@ namespace Forecast.it.Common
 
         public string CurrentUsername { get; set; }
         public string CurrentPassword { get; set; }
-        public Frame CurrentPageView { get; set; }
+        public Page CurrentPageView { get; set; }
         
         //private constructor
         private SingletonCommon(){}
