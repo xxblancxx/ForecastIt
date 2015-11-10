@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Forecast.it.Annotations;
 using Forecast.it.Common;
+using Forecast.it.Model;
 
 namespace Forecast.it.ViewModel
 {
@@ -43,6 +44,8 @@ namespace Forecast.it.ViewModel
         {
             _singleton.CurrentUsername = Username;
             _singleton.CurrentPassword = Password;
+            var requester = new Requester();
+            requester.LogIn();
         }
 
         #region PropertyChanged
