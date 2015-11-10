@@ -64,6 +64,7 @@
                 </Button.Template>
             </Button>
         </Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="32,37.167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Project :" VerticalAlignment="Top"/>
 
         <!--TODO: Content should be placed within the following grid-->
         
