@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Popups;
+using Forecast.it.Common;
 using Forecast.it.Infrastructure;
 using Forecast.it.Model;
 
@@ -19,6 +20,7 @@ namespace Forecast.it.ViewModel
     public class ProjectViewModel : INotifyPropertyChanged
     {
         private static int pid = (App.Current as App).project_id;
+        private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -83,34 +85,15 @@ namespace Forecast.it.ViewModel
         //Command objects
         public ICommand NewOrders { get; private set; }
         public ICommand AddOrder { get; private set; }
-        //public ICommand UpdateOrder { get; private set; }
-        //public ICommand DeleteOrder { get; private set; }
-
+       
         public ProjectViewModel()
         {
-            //NewOrders = new RoutedCommand(NewOrder);
-           // AddOrder = new RoutedCommand(CreateOrder);
-            // UpdateOrder = new RoutedCommand(EditOrder);
-            //DeleteOrder = new RoutedCommand(RemoveOrder);
-            
+           
             LoadOrders();
+
             Project = new Project();
         }
-        //async void connect()
-        //{
-        //    using (var client = new HttpClient())
-        //    {
-
-        //        client.BaseAddress = new Uri("https://api.forecast.it/api/v1/projects");
-
-        //        var byteArray = Encoding.UTF8.GetBytes("27578cb2-8b15-417b-9b42-36ca8922f92c:jashmin86527");
-        //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
-        //            Convert.ToBase64String(byteArray));
-
-        //        //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //    }
-        //}
+       
         private async void LoadOrders()
         {
             
@@ -121,6 +104,7 @@ namespace Forecast.it.ViewModel
                 var byteArray =Encoding.UTF8.GetBytes((App.Current as App).username + ":" + (App.Current as App).password);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
                 HttpResponseMessage response = client.GetAsync("projects/").Result;
 
                 try
@@ -142,8 +126,42 @@ namespace Forecast.it.ViewModel
             }
       }
 
+        private  Project LoadProjectdetails(int projectid)
+        {
+            Project p = new Project();
+            using (var client = new HttpClient())
+            {
+                //27578cb2-8b15-417b-9b42-36ca8922f92c
+                client.BaseAddress = new Uri((App.Current as App).BaseAddress);
+                var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-       
+                HttpResponseMessage response = client.GetAsync("projects/"+projectid).Result;
+
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    {
+                        var ordersList = new DataContractJsonSerializer(typeof(List<Project>));
+                        Projects = new ObservableCollection<Project>((IEnumerable<Project>)ordersList.ReadObject(responseStream));
+                    }
+                }
+                catch (HttpRequestException)
+                {
+                    var msg =
+                        new MessageDialog("Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase);
+                    msg.ShowAsync();
+
+                }
+
+                p.id= Projects[0].id;
+                return p;
+
+            }
+        }
+
 
     }
 }
