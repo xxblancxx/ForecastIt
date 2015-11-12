@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:Media="using:Microsoft.Xaml.Interactions.Media"
+    xmlns:viewModel="using:Forecast.it.ViewModel"
     x:Class="Forecast.it.View.ProjectListPage"
     mc:Ignorable="d">
     <Page.Background>
@@ -13,9 +14,10 @@
             <GradientStop Color="Black" Offset="0"/>
             <GradientStop Color="White" Offset="1"/>
         </LinearGradientBrush>
+       
     </Page.Background>
-
-    <Grid x:Name="LayoutRoot" Background="#FF2E1F3C">
+  
+        <Grid x:Name="LayoutRoot" Background="#FF2E1F3C">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition/>
@@ -35,11 +37,13 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-        <ListView x:Name="listView" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Column="1">
+        <ListView x:Name="listView" Grid.Row="1" Grid.ColumnSpan="3" 
+                  Grid.RowSpan="2" Grid.Column="1"
+                   >
             <Grid>
                 <Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="PointerPressed">
-                        <Core:NavigateToPageAction TargetPage="Forecast.it.View.ListOfUserStories"/>
+                        <Core:NavigateToPageAction TargetPage="Forecast.it.View.ViewProjectDetails"/>
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>
                 <Grid.RowDefinitions>
@@ -94,6 +98,7 @@
         </AppBarButton>
 
         <!-- Title Panel -->
+ 
 
         <!--TODO: Content should be placed within the following grid-->
     </Grid>

@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Forecast.it.Common;
 using Forecast.it.View;
+using Microsoft.Xaml.Interactions.Core;
 using Newtonsoft.Json;
 
 namespace Forecast.it.Model
@@ -37,7 +39,9 @@ namespace Forecast.it.Model
                         var response = client.GetAsync("").Result;
                         if (response.IsSuccessStatusCode)
                         {
-                            _singleton.CurrentPageView.Navigate(typeof (ProjectListPage));
+                            
+                            _singleton.CurrentPageView.Frame.Navigate(typeof(ProjectListPage));
+                            
                             return true;
                         }
                         else
