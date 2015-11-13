@@ -47,7 +47,7 @@
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-       
+
         <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
 
         <ListView x:Name="listView" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0"
@@ -60,15 +60,15 @@
                   ItemClick="MyClick"
                    SelectedValuePath="id"
                  >
-            
-           
-            
-            
- 
+
+
+
+
+
 
 
             <Grid>
-            
+
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>

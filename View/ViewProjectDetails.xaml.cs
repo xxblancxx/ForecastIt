@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Forecast.it.Annotations;
+using Forecast.it.Common;
+using Forecast.it.Model;
 using Forecast.it.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -24,9 +26,10 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class ViewProjectDetails : Page
     {
-        public List<string> Getdata; 
+     
         public ViewProjectDetails()
         {
+            
             this.InitializeComponent();
             
         }
@@ -40,19 +43,26 @@ namespace Forecast.it.View
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-           
-           
+            Project prjProject = e.Parameter as Project;
+            if (prjProject != null)
+
+            {
+                pname.Text = prjProject.name;
+                pstage.Text = prjProject.projectStatus;
+                powner.Text = prjProject.projectOwner.ToString();
+                pmanager.Text = prjProject.projectManager.ToString();
+                pplanner.Text = prjProject.projectEstimator.ToString();
+
+            }
         }
-    
-            //pstage.Text = pvm.Projects[0].projectStatus;
-            //powner.Text = pvm.Projects[0].projectOwner.ToString();
-            //pmanager.Text = pvm.Projects[0].projectManager.ToString();
-            //pplanner.Text = pvm.Projects[0].projectEstimator.ToString();
 
-        
+        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
+{
+   
+    }
 
-        private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
+
+private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = sender as MenuFlyoutItem;
 
