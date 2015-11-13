@@ -331,7 +331,7 @@ namespace Forecast.it.Common
                     nextPageKey = "Page-" + nextPageIndex;
                 }
 
-                // Pass the navigation parameter to the new page
+                // Pass the navigation Parameter to the new page
                 if (this.LoadState != null)
                 {
                     this.LoadState(this, new LoadStateEventArgs(e.Parameter, null));
@@ -339,7 +339,7 @@ namespace Forecast.it.Common
             }
             else
             {
-                // Pass the navigation parameter and preserved page state to the page, using
+                // Pass the navigation Parameter and preserved page state to the page, using
                 // the same strategy for loading suspended state and recreating pages discarded
                 // from cache
                 if (this.LoadState != null)
@@ -385,7 +385,7 @@ namespace Forecast.it.Common
     public class LoadStateEventArgs : EventArgs
     {
         /// <summary>
-        /// The parameter value passed to <see cref="Frame.Navigate(Type, Object)"/> 
+        /// The Parameter value passed to <see cref="Frame.Navigate(Type, Object)"/> 
         /// when this page was initially requested.
         /// </summary>
         public Object NavigationParameter { get; private set; }
@@ -399,7 +399,7 @@ namespace Forecast.it.Common
         /// Initializes a new instance of the <see cref="LoadStateEventArgs"/> class.
         /// </summary>
         /// <param name="navigationParameter">
-        /// The parameter value passed to <see cref="Frame.Navigate(Type, Object)"/> 
+        /// The Parameter value passed to <see cref="Frame.Navigate(Type, Object)"/> 
         /// when this page was initially requested.
         /// </param>
         /// <param name="pageState">

@@ -12,8 +12,8 @@
 
     <Page.Resources>
 
-       <!-- <viewModel:ProjectViewModel x:Key="vmDs"></viewModel:ProjectViewModel>
-       -->
+       <viewModel:ProjectViewModel x:Key="vmDs"></viewModel:ProjectViewModel>
+     
     </Page.Resources>
     <Grid x:Name="LayoutRoot" Background="#FF2E1F3C" >
 

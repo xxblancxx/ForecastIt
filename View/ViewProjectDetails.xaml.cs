@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Forecast.it.Annotations;
 using Forecast.it.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -23,32 +24,33 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class ViewProjectDetails : Page
     {
+        public List<string> Getdata; 
         public ViewProjectDetails()
         {
             this.InitializeComponent();
-
-            var projectdeatils= new ProjectViewModel();
-            var projectstage = projectdeatils.Project.projectStatus;
-            var projectowner = projectdeatils.Project.projectOwner;
-            var projectestimator = projectdeatils.Project.projectEstimator;
-            var projectmanager = projectdeatils.Project.projectManager;
-
-           
-
-
-
+            
         }
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        /// This Parameter is typically used to configure the page.</param>
     
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+           
+           
         }
+    
+            //pstage.Text = pvm.Projects[0].projectStatus;
+            //powner.Text = pvm.Projects[0].projectOwner.ToString();
+            //pmanager.Text = pvm.Projects[0].projectManager.ToString();
+            //pplanner.Text = pvm.Projects[0].projectEstimator.ToString();
+
+        
 
         private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
         {
@@ -96,6 +98,8 @@ namespace Forecast.it.View
 
             }
         }
+
+      
 
     }
 }

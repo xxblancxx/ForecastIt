@@ -21,7 +21,7 @@ namespace Forecast.it.Model
         private readonly string _baseAddress = "https://api.forecast.it/api/v1/";
         private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
 
-        public bool LogIn()
+        public  bool LogIn()
         {
             using (var handler = new HttpClientHandler())
             {
@@ -42,13 +42,13 @@ namespace Forecast.it.Model
                             
                             _singleton.CurrentPageView.Frame.Navigate(typeof(ProjectListPage));
                             
-                            return true;
+                           return true;
                         }
                         else
                         {
                             var msg = new MessageDialog("Wrong Username or Password");
                             msg.ShowAsync();
-                            return false;
+                           return false;
                         }
                         
                     }
@@ -56,7 +56,7 @@ namespace Forecast.it.Model
                     {
                        var msg = new MessageDialog("Wrong Username or Password");
                         msg.ShowAsync();
-                        return false;
+                       return false;
                     }
                     catch (HttpRequestException)
                     {
