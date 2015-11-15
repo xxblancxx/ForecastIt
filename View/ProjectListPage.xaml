@@ -19,11 +19,11 @@
     <Page.Resources>
         <viewModel:ProjectViewModel x:Key="vmDs"></viewModel:ProjectViewModel>
         <DataTemplate x:Key="orderTemplate">
-            <StackPanel Orientation="Horizontal" Width="600">
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding id}" Width="31" FontFamily="Global User Interface"></TextBlock>
                 <TextBlock Text="{Binding projectIdString}" Width="65" FontFamily="Global User Interface"></TextBlock>
                 <TextBlock Text="{Binding name}" Width="156" FontFamily="Global User Interface"></TextBlock>
-                <TextBlock Text="{Binding startDate}" Width="123"></TextBlock>
+                <TextBlock Text="{Binding startDate}" Width="123" FontFamily="Global User Interface"></TextBlock>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>

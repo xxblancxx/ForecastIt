@@ -26,12 +26,15 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class ViewProjectDetails : Page
     {
-     
+        private NavigationHelper navigationHelper;
+
         public ViewProjectDetails()
         {
             
             this.InitializeComponent();
-            
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
+            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
         /// <summary>
@@ -43,6 +46,7 @@ namespace Forecast.it.View
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.navigationHelper.OnNavigatedTo(e);
             Project prjProject = e.Parameter as Project;
             if (prjProject != null)
 
@@ -56,10 +60,7 @@ namespace Forecast.it.View
             }
         }
 
-        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
-{
-   
-    }
+ 
 
 
 private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
@@ -108,8 +109,22 @@ private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
 
             }
         }
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            this.navigationHelper.OnNavigatedFrom(e);
+        }
+        private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+        }
 
-      
+        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        {
+        }
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+        public ObservableDictionary DefaultViewModel { get; } = new ObservableDictionary();
 
     }
 }
