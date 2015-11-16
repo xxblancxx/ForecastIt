@@ -51,6 +51,7 @@ namespace Forecast.it.View
             if (prjProject != null)
 
             {
+
                 pname.Text = prjProject.name;
                 pstage.Text = prjProject.projectStatus;
                 powner.Text = prjProject.projectOwner.ToString();
@@ -76,9 +77,10 @@ private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
                     break;
 
                 case "task":
-
+                    this.Frame.Navigate(typeof(CreateTaskPage));
                     break;
                 case "project":
+                    Frame.Navigate(typeof (CreateProjectPage));
                     //
                     break;
             }

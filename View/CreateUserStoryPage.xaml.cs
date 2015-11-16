@@ -130,9 +130,10 @@ namespace Forecast.it.View
                     break;
 
                 case "task":
-
+                    this.Frame.Navigate(typeof(CreateTaskPage));
                     break;
                 case "project":
+                    Frame.Navigate(typeof(CreateProjectPage));
                     //
                     break;
             }

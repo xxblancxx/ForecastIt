@@ -72,7 +72,7 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <ScrollViewer x:Name="ContentGrid" VerticalScrollBarVisibility="Auto" 
-                      Grid.Row="1" Margin="0,0.167,0,10" >
+                      Grid.Row="1" Margin="0,0.167,0,78" >
             <Grid x:Name="ContentRoot"
               DataContext="{Binding Path=UserStory,Mode=TwoWay}" >
 

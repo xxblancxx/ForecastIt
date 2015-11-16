@@ -125,14 +125,15 @@ namespace Forecast.it.View
             {
                 case "userstory":
                     this.Frame.Navigate(typeof(ChooseProjectPage));
-                    
+
                     //
                     break;
 
                 case "task":
-                   
+                    this.Frame.Navigate(typeof(CreateTaskPage));
                     break;
                 case "project":
+                    Frame.Navigate(typeof(CreateProjectPage));
                     //
                     break;
             }
