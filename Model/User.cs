@@ -8,14 +8,22 @@ namespace Forecast.it.Model
 {
    public class User
     {
-      
-    
-       public string User_Email { get; set; }
-       
 
-       public override string ToString()
-       {
-           return string.Format("{0}", User_Email);
-       }
+
+      
+        public int id { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string initials { get; set; }
+        public string email { get; set; }
+        public DateTime dateCreated { get; set; }
+        public DateTime lastUpdated { get; set; }
+        public bool isAdmin { get; set; }
+        public bool active { get; set; }
+        public int defaultRole { get; set; }
+        public int externalEmployeeId { get; set; }
+
+
+       
     }
 }
