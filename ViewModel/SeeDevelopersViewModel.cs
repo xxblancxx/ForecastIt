@@ -27,10 +27,11 @@ namespace Forecast.it.ViewModel
 
         }
 
-        public void GetUsers()
+        public ObservableCollection<User> GetUsers()
         {
-            var result = requester.GetRequestAsync<User>(EndPoints.Users).Result;
-            userCollection = new ObservableCollection<User>(result);
+            var result = requester.GetRequestAsync<User>(EndPoints.Users);
+            userCollection = new ObservableCollection<User>(result.Result);
+            return userCollection;
         }
 
 
