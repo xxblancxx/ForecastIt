@@ -39,6 +39,8 @@ namespace Forecast.it
             SingletonCommon.SingletonInstance.CurrentPageView = this;
         }
 
+ 
+
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
