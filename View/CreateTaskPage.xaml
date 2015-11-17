@@ -9,7 +9,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 	<Grid x:Name="LayoutRoot" Background="#FF2E1F3C">
-		<Grid.ColumnDefinitions>
+        <Grid.DataContext>
+            <ViewModel:TaskViewModel/>
+        </Grid.DataContext>
+        <Grid.ColumnDefinitions>
 			<ColumnDefinition Width="100"/>
 			<ColumnDefinition/>
 			<ColumnDefinition/>
@@ -38,9 +41,7 @@
 		<!-- Title Panel -->
 
 		<!--TODO: Content should be placed within the following grid-->
-		<Grid.DataContext>
-			<ViewModel:TaskViewModel/>
-		</Grid.DataContext>
+		
 		<Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
 		<AppBarButton x:Name="ProjectOptionsButton" HorizontalAlignment="Stretch" Icon="ShowResults" Label="Options" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Column="4"/>
 		<TextBox x:Name="USTitle" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" Grid.ColumnSpan="3" PlaceholderText="Title" VerticalAlignment="Top" Text="{Binding Title, Mode=TwoWay}"/>

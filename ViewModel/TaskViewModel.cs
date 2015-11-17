@@ -11,6 +11,7 @@ using Windows.UI.Popups;
 using Forecast.it.Infrastructure;
 using Forecast.it.Model;
 using Newtonsoft.Json;
+using Forecast.it.Common;
 
 namespace Forecast.it.ViewModel
 {
@@ -18,7 +19,8 @@ namespace Forecast.it.ViewModel
     {
         
          private static int pid = (App.Current as App).project_id;
-            public TaskViewModel()
+        private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
+        public TaskViewModel()
             {
 
                 AddTask = new RoutedCommand(CreateTasked);
@@ -133,7 +135,7 @@ namespace Forecast.it.ViewModel
                 {
                     client.BaseAddress = new Uri("https://api.forecast.it/api/v1/");
 
-                    var byteArray = Encoding.UTF8.GetBytes((App.Current as App).username + ":" + (App.Current as App).password);
+                    var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
                     //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
@@ -157,7 +159,7 @@ namespace Forecast.it.ViewModel
 
                     try
                     {
-                        var response = await client.PostAsync("projects/"+pid+"/tasks", contentToPost);
+                        var response = await client.PostAsync("projects/712/tasks", contentToPost);
                         response.EnsureSuccessStatusCode();
                         await new MessageDialog("New Task Added Successfully").ShowAsync();
 
