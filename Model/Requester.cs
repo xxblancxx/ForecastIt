@@ -25,7 +25,7 @@ namespace Forecast.it.Model
         {
             using (var handler = new HttpClientHandler())
             {
-                handler.Credentials = new NetworkCredential(_singleton.CurrentUsername,_singleton.CurrentPassword);
+                handler.Credentials = new NetworkCredential(_singleton.CurrentUsername, _singleton.CurrentPassword);
                 using (var client = new HttpClient(handler))
                 {
                     client.BaseAddress = new Uri(_baseAddress + "users");
@@ -39,9 +39,8 @@ namespace Forecast.it.Model
                         var response = client.GetAsync("").Result;
                         if (response.IsSuccessStatusCode)
                         {
-                            _singleton.CurrentPageView.Frame.Navigate(typeof (ProjectListPage));
                             _singleton.CurrentPageView.Frame.Navigate(typeof(ProjectListPage));
-                            
+
                             return true;
                         }
                         else
@@ -50,11 +49,11 @@ namespace Forecast.it.Model
                             msg.ShowAsync();
                             return false;
                         }
-                        
+
                     }
                     catch (JsonException e)
                     {
-                       var msg = new MessageDialog("Wrong Username or Password");
+                        var msg = new MessageDialog("Wrong Username or Password");
                         msg.ShowAsync();
                         return false;
                     }

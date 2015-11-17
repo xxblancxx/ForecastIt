@@ -33,14 +33,13 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="Username" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" PlaceholderText="Username" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
-        <PasswordBox x:Name="UserPassword" d:LayoutOverrides="Width" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" PlaceholderText="Password" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
-        <PasswordBox x:Name="ConfirmPassword" d:LayoutOverrides="Width" Grid.Row="6" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" PlaceholderText="ConfirmPassword" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"/>
+        <TextBox x:Name="lastName" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" PlaceholderText="Last Name" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+        <TextBox x:Name="emailBox" d:LayoutOverrides="Width" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" PlaceholderText="E-mail" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
         <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Grid.RowSpan="2"/>
-        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Background="#FF61BA9C"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="9" Grid.ColumnSpan="2" Grid.Column="1" Background="#FF61BA9C"/>
+        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Background="#FF61BA9C"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="7" Grid.ColumnSpan="2" Grid.Column="1" Background="#FF61BA9C"/>
         <TextBlock x:Name="Header" TextWrapping="Wrap" Text="Create Developer" d:LayoutOverrides="Width, Height" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" FontSize="26.667" FontWeight="Bold"/>
-        <TextBox x:Name="Name" TextWrapping="Wrap" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" PlaceholderText="Name" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+        <TextBox x:Name="firstName" TextWrapping="Wrap" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" PlaceholderText="First Name" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
 
         <!-- Title Panel -->
 
