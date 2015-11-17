@@ -8,9 +8,9 @@ namespace Forecast.it.Model
 {
    public class User
     {
-       public string url { get; set; }
-       public int id { get; set; }
-       public string firstName { get; set; }
+        public string url { get; set; }
+        public int id { get; set; }
+        public string firstName { get; set; }
        public string lastName { get; set; }
        public string initials { get; set; }
        public string email { get; set; }
@@ -46,8 +46,17 @@ namespace Forecast.it.Model
            this.integrationTimelogId = integrationTimelogId;
            
        }
+        public User(string firstName, string lastName, string initials, string email, bool isAdmin, string startPage)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.initials = initials;
+            this.email = email;
+            this.isAdmin = isAdmin;
+            this.startPage = startPage;
+        }
 
-       public override string ToString()
+        public override string ToString()
        {
            return $"url: {url}, id: {id}, firstName: {firstName}, lastName: {lastName}, initials: {initials}, email: {email}, dateCreated: {dateCreated}, lastUpdated: {lastUpdated}, isAdmin: {isAdmin}, active: {active}, defaulRrole: {defaulRrole}, externalEmployeeId: {externalEmployeeId}, startPage: {startPage}, integrationTimelogId: {integrationTimelogId}";
        }
