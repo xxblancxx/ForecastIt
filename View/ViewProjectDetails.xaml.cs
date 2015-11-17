@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Forecast.it.Annotations;
+using Forecast.it.Common;
+using Forecast.it.Model;
 using Forecast.it.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -23,31 +26,45 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class ViewProjectDetails : Page
     {
+        private NavigationHelper navigationHelper;
+
         public ViewProjectDetails()
         {
+            
             this.InitializeComponent();
-
-            var projectdeatils= new ProjectViewModel();
-            var projectstage = projectdeatils.Project.projectStatus;
-            var projectowner = projectdeatils.Project.projectOwner;
-            var projectestimator = projectdeatils.Project.projectEstimator;
-            var projectmanager = projectdeatils.Project.projectManager;
-
-
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
+            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        /// This Parameter is typically used to configure the page.</param>
     
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.navigationHelper.OnNavigatedTo(e);
+            Project prjProject = e.Parameter as Project;
+            if (prjProject != null)
+
+            {
+
+                pname.Text = prjProject.name;
+                pstage.Text = prjProject.projectStatus;
+                powner.Text = prjProject.projectOwner.ToString();
+                pmanager.Text = prjProject.projectManager.ToString();
+                pplanner.Text = prjProject.projectEstimator.ToString();
+
+            }
         }
 
-        private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
+ 
+
+
+private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = sender as MenuFlyoutItem;
 
@@ -60,9 +77,10 @@ namespace Forecast.it.View
                     break;
 
                 case "task":
-
+                    this.Frame.Navigate(typeof(CreateTaskPage));
                     break;
                 case "project":
+                    Frame.Navigate(typeof (CreateProjectPage));
                     //
                     break;
             }
@@ -93,6 +111,22 @@ namespace Forecast.it.View
 
             }
         }
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            this.navigationHelper.OnNavigatedFrom(e);
+        }
+        private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+        }
+
+        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        {
+        }
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+        public ObservableDictionary DefaultViewModel { get; } = new ObservableDictionary();
 
     }
 }

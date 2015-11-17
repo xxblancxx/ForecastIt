@@ -22,13 +22,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
 
 
         <!-- Title Panel -->
         <Grid Grid.Row="0"  >
             <Image Source="/Image/PageLogo.jpg" Height="63" HorizontalAlignment="Left" Width="131" VerticalAlignment="Center"/>
-            <Button Height="66" Width="100" HorizontalAlignment="Center">
+            <Button x:Name="btncreat" Height="66" Width="100" HorizontalAlignment="Center">
                 <Button.Flyout>
 
                     <MenuFlyout  >
@@ -47,7 +48,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Height="59" RenderTransformOrigin="0.917,-0.147" Width="85" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Button x:Name="btnoption" Height="59" RenderTransformOrigin="0.917,-0.147" Width="85" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Button.Flyout>
                     <MenuFlyout  >
                         <MenuFlyoutItem x:Name="projectsetting" Text="ProjectSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
@@ -71,7 +72,7 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <ScrollViewer x:Name="ContentGrid" VerticalScrollBarVisibility="Auto" 
-                      Grid.Row="1" >
+                      Grid.Row="1" Margin="0,0.167,0,78" >
             <Grid x:Name="ContentRoot"
               DataContext="{Binding Path=UserStory,Mode=TwoWay}" >
 
@@ -86,22 +87,12 @@
                 <TextBlock HorizontalAlignment="Left" Margin="13,430,0,113" TextWrapping="Wrap" Text="Tags" FontSize="25" VerticalAlignment="Top"  />
                 <TextBlock HorizontalAlignment="Left" Margin="10,251,0,0" TextWrapping="Wrap" Text="Epic" VerticalAlignment="Top" FontFamily="Calibri" FontSize="25"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,204,0,0" TextWrapping="Wrap" Text="Accept Cond." FontFamily="Calibri" FontSize="25" VerticalAlignment="Top"  />
-
                 <TextBox x:Name="txt_title" Margin="157,21,10,0" TextWrapping="Wrap"  Text="{Binding title,Mode=TwoWay, FallbackValue=Title of UserStory}" VerticalAlignment="Top" FontFamily="Calibri" FontSize="15" GotFocus="Txt_tile_GotFocus"  />
                 <TextBox x:Name="txt_description" Margin="157,66,10,0" TextWrapping="Wrap" Text="{Binding description,Mode=TwoWay, FallbackValue=UserStory Description}" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="15" GotFocus="Txt_description_GotFocus" />
-
                 <TextBox x:Name="txt_estimate" Margin="157,111,10,0" TextWrapping="Wrap" Text="{Binding estimate,Mode=TwoWay, FallbackValue=In Hours}" VerticalAlignment="Top" FontFamily="Calibri" FontSize="15" GotFocus="Txt_estimate_GotFocus" />
                 <ListBox Margin="157,379,10,153"/>
-
-
-                <!--
-            <TextBox x:Name="txt_owner" HorizontalAlignment="Left" Margin="157,361,0,0" TextWrapping="Wrap" Text="{Binding owners,Mode=TwoWay, FallbackValue= 637}" VerticalAlignment="Top" Width="217" Height="31" FontFamily="Calibri" FontSize="15" GotFocus="Txt_owner_GotFocus" />
-           -->
-
                 <TextBox x:Name="txt_acceptance" Margin="157,200,10,0" TextWrapping="Wrap" Text="{Binding acceptanceCriteria, FallbackValue=optional, Mode=TwoWay}" VerticalAlignment="Top" FontFamily="Calibri" FontSize="15" GotFocus="Txt_acceptance_GotFocus" />
                 <TextBox x:Name="txt_epic" Margin="157,245,10,0" TextWrapping="Wrap" Text="{Binding epic, FallbackValue=Optional, Mode=TwoWay}" VerticalAlignment="Top" FontFamily="Calibri" FontSize="15" GotFocus="Txt_epic_GotFocus"/>
-
-
                 <TextBox x:Name="txt_tag" Margin="157,427,10,0" TextWrapping="Wrap" Text="{Binding tags, FallbackValue=id of the tags, Mode=TwoWay}" VerticalAlignment="Top" FontFamily="Calibri" FontSize="15" GotFocus="Txt_tags_GotFocus" />
 
 
@@ -109,33 +100,33 @@
             DisplayMemberPath="name"
             SelectedItem="{Binding type}"
             SelectedValuePath="id"
-            SelectedValue="{Binding type,Mode=TwoWay}" Margin="157,147,10,368"  FontFamily="Calibri" FontSize="15"  />
+            SelectedValue="{Binding type,Mode=TwoWay}" Margin="157,147,10,323"  FontFamily="Calibri" FontSize="15" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"  />
 
                 <ComboBox x:Name="cmb_sprint" 
             DisplayMemberPath="title"
             SelectedItem="{Binding sprint}"
             SelectedValuePath="id"
-            SelectedValue="{Binding sprint,Mode=TwoWay}" Margin="157,282,10,235"  FontFamily="Calibri" FontSize="15" />
+            SelectedValue="{Binding sprint,Mode=TwoWay}" Margin="157,282,10,192"  FontFamily="Calibri" FontSize="15" />
 
                 <ComboBox x:Name="cmb_status" 
             DisplayMemberPath="category"
             SelectedItem="{Binding status}"
             SelectedValuePath="id"
-            SelectedValue="{Binding status,Mode=TwoWay}" Margin="157,327,10,189"  FontFamily="Calibri" FontSize="15"  />
-
+            SelectedValue="{Binding status,Mode=TwoWay}" Margin="157,327,10,148"  FontFamily="Calibri" FontSize="15"  />
 
 
 
             </Grid>
+
         </ScrollViewer>
-        <Button x:Name="btn_add" Height="68" Width="122" Command="{Binding AddOrder}" CommandParameter="{Binding UserStory}" Content="Add Order" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,22" Grid.Row="1">
+
+        <Button Grid.Row="1" x:Name="btn_add" Height="68" Width="122" Command="{Binding AddOrder}" CommandParameter="{Binding UserStory}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Image/SaveButton.jpg"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-
 
 
 

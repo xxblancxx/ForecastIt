@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Forecast.it.Common;
 using Forecast.it.View;
+using Microsoft.Xaml.Interactions.Core;
 using Newtonsoft.Json;
 
 namespace Forecast.it.Model
@@ -19,7 +21,7 @@ namespace Forecast.it.Model
         private readonly string _baseAddress = "https://api.forecast.it/api/v1/";
         private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
 
-        public bool LogIn()
+        public  bool LogIn()
         {
             using (var handler = new HttpClientHandler())
             {
@@ -37,14 +39,16 @@ namespace Forecast.it.Model
                         var response = client.GetAsync("").Result;
                         if (response.IsSuccessStatusCode)
                         {
-                            _singleton.CurrentPageView.Frame.Navigate(typeof (ProjectListPage));
-                            return true;
+                            
+                            _singleton.CurrentPageView.Frame.Navigate(typeof(ProjectListPage));
+                            
+                           return true;
                         }
                         else
                         {
                             var msg = new MessageDialog("Wrong Username or Password");
                             msg.ShowAsync();
-                            return false;
+                           return false;
                         }
                         
                     }
@@ -52,7 +56,7 @@ namespace Forecast.it.Model
                     {
                        var msg = new MessageDialog("Wrong Username or Password");
                         msg.ShowAsync();
-                        return false;
+                       return false;
                     }
                     catch (HttpRequestException)
                     {

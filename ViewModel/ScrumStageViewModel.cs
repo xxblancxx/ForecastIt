@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Popups;
+using Forecast.it.Common;
 using Forecast.it.Infrastructure;
 
 namespace Forecast.it.Model
@@ -20,6 +21,7 @@ namespace Forecast.it.Model
         //POST  shuld be posted like-https://api.forecast.it/api/v1/projects/1/tasks
 
         private static int pid = (App.Current as App).project_id;
+        private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -120,7 +122,7 @@ namespace Forecast.it.Model
 
                 client.BaseAddress = new Uri((App.Current as App).BaseAddress);
 
-                var byteArray = Encoding.UTF8.GetBytes((App.Current as App).username + ":" + (App.Current as App).password);
+                var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
                 //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));

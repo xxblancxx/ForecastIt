@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:Media="using:Microsoft.Xaml.Interactions.Media"
+    xmlns:viewModel="using:Forecast.it.ViewModel"
     x:Class="Forecast.it.View.ProjectListPage"
     mc:Ignorable="d">
     <Page.Background>
@@ -13,9 +14,21 @@
             <GradientStop Color="Black" Offset="0"/>
             <GradientStop Color="White" Offset="1"/>
         </LinearGradientBrush>
-    </Page.Background>
 
-    <Grid x:Name="LayoutRoot" Background="#FF2E1F3C">
+    </Page.Background>
+    <Page.Resources>
+        <viewModel:ProjectViewModel x:Key="vmDs"></viewModel:ProjectViewModel>
+        <DataTemplate x:Key="orderTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding id}" Width="31" FontFamily="Global User Interface"></TextBlock>
+                <TextBlock Text="{Binding projectIdString}" Width="65" FontFamily="Global User Interface"></TextBlock>
+                <TextBlock Text="{Binding name}" Width="156" FontFamily="Global User Interface"></TextBlock>
+                <TextBlock Text="{Binding startDate}" Width="123" FontFamily="Global User Interface"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="#FF2E1F3C" DataContext="{Binding Source={StaticResource vmDs}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition/>
@@ -34,14 +47,28 @@
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
+
         <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-        <ListView x:Name="listView" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Column="1">
+
+        <ListView x:Name="listView" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0"
+                  Grid.RowSpan="3"
+                  ItemsSource="{Binding Projects}"
+   SelectedItem="{Binding Source={StaticResource vmDs},Path=SelectedOrder,Mode=TwoWay}"
+   ItemTemplate="{StaticResource orderTemplate}" 
+                  Margin="10,10,10,0" Height="520" 
+                  VerticalAlignment="Top" IsItemClickEnabled="True" 
+                  ItemClick="MyClick"
+                   SelectedValuePath="id"
+                 >
+
+
+
+
+
+
+
             <Grid>
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="PointerPressed">
-                        <Core:NavigateToPageAction TargetPage="Forecast.it.View.ListOfUserStories"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
+
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -55,14 +82,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="ProjectName" TextWrapping="Wrap" Text="Project Name" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3"/>
-                <TextBlock x:Name="SprintName" TextWrapping="Wrap" Text="Sprint 1" d:LayoutOverrides="Width, Height" Grid.Row="1"/>
-                <TextBlock x:Name="SDate" TextWrapping="Wrap" Text="Start Date" d:LayoutOverrides="Width, Height" Grid.Row="2" Grid.Column="1"/>
-                <TextBlock x:Name="EDate" TextWrapping="Wrap" Text="End date" d:LayoutOverrides="Width, Height" Grid.Row="3" Grid.Column="1"/>
-                <TextBlock x:Name="StartDate" TextWrapping="Wrap" Text="28.10.2015" d:LayoutOverrides="Width, Height" Grid.Row="2" Grid.Column="2"/>
-                <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="31.12.2050" d:LayoutOverrides="Width, Height" Grid.Row="3" Grid.Column="2"/>
+                <!--
                 <Button x:Name="ProjectDescription" Content="Project Description" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="4" Grid.ColumnSpan="3"/>
-                <TextBlock x:Name="textBlock1" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="5" Grid.ColumnSpan="3"/>
+           
+                -->
             </Grid>
         </ListView>
         <AppBarButton x:Name="AddProjectButton" HorizontalAlignment="Stretch" Label="Create New Project" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Column="1" Icon="Add">
@@ -94,6 +117,7 @@
         </AppBarButton>
 
         <!-- Title Panel -->
+
 
         <!--TODO: Content should be placed within the following grid-->
     </Grid>

@@ -36,10 +36,10 @@
         </Grid.RowDefinitions>
         <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
         <AppBarButton x:Name="ProjectOptionsButton" HorizontalAlignment="Stretch" Icon="ShowResults" Label="Options" VerticalAlignment="Stretch" Grid.Column="4" d:LayoutOverrides="Width, Height"/>
-        <TextBox x:Name="ProjectNameBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" Grid.Column="1" PlaceholderText="Project Name" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="StartDateBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" PlaceholderText="Start date" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="EndDateBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Column="1" Grid.Row="4" PlaceholderText="End date" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="ProjectDescribtionBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Stretch" PlaceholderText="Description" Grid.Column="1"/>
+        <TextBox x:Name="ProjectNameBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" Grid.Column="1" PlaceholderText="Project Name" Grid.ColumnSpan="3" MinHeight="40"/>
+        <TextBox x:Name="StartDateBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" PlaceholderText="Start date" Grid.ColumnSpan="3" MinHeight="40"/>
+        <TextBox x:Name="EndDateBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Column="1" Grid.Row="4" PlaceholderText="End date" Grid.ColumnSpan="3" MinHeight="40"/>
+        <TextBox x:Name="ProjectDescribtionBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Stretch" PlaceholderText="Description" Grid.Column="1" MinHeight="115"/>
         <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="8" Background="#FF61BA9C" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="2"/>
         <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="8" Grid.Column="3" Background="#FF61BA9C" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="2"/>
 
