@@ -53,9 +53,8 @@ namespace Forecast.it.Model
 
                         if (response.IsSuccessStatusCode)
                         {
-                            _singleton.CurrentPageView.Frame.Navigate(typeof (ProjectListPage));
                             _singleton.CurrentPageView.Frame.Navigate(typeof(ProjectListPage));
-                            
+
                             return true;
                         }
                         else
@@ -64,11 +63,11 @@ namespace Forecast.it.Model
                             msg.ShowAsync();
                             return false;
                         }
-                        
+
                     }
                     catch (JsonException e)
                     {
-                       var msg = new MessageDialog("Wrong Username or Password");
+                        var msg = new MessageDialog("Wrong Username or Password");
                         msg.ShowAsync();
                         return false;
                     }
