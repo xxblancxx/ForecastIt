@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
 
         <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" HorizontalAlignment="Left" Margin="0,0.084,0,-22.417" d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopPosition, BottomPosition"/>
-        <ListView x:Name="listView" Grid.Row="1" Margin="100,22.5,0,99.833" ItemsSource="{Binding taskCollection}">
+        <ListView x:Name="listView" Grid.Row="1" Margin="100,22.5,0,99.833" ItemsSource="{Binding TaskCollection}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>

@@ -8,23 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Forecast.it.Annotations;
 using Forecast.it.Model;
-using Task = Forecast.it.Model.Task;
 
 namespace Forecast.it.ViewModel
 {
     public class ViewTaskViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Task> taskCollection { get; set; }
-        List<int> ints = new List<int>(); 
+        public ObservableCollection<Tasked> TaskCollection { get; set; }
 
         public ViewTaskViewModel()
         {
-            taskCollection = new ObservableCollection<Task>();
-            const string url = "https://api.forecast.it/api/v1/projects/712/tasks";
-            taskCollection.Add(new Task("bla",1,"","",1,1,1,1,1,ints,1,DateTime.Now, ints,true,1,1,1,DateTime.Now, 1,DateTime.Today, 1));
-
+            TaskCollection = new ObservableCollection<Tasked>();
+            const string url = "https://api.forecast.it/api/v1/projects/1/tasks/1";
+            TaskCollection.Add(new Tasked());
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 

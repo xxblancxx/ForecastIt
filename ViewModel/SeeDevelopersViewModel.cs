@@ -19,7 +19,7 @@ namespace Forecast.it.ViewModel
         {
             userCollection = new ObservableCollection<User>();
             const string url = "https://api.forecast.it/api/v1/users/";
-            userCollection.Add(new User("URL Test", 1, "bob", "bobsen", "BB", "bob@email.farout", DateTime.Now, DateTime.Now, true, true, 1, "bob knows his id", "default startpage", 4, ""));
+            userCollection.Add(new User(url, 1, "bob", "bobsen", "BB", "bob@email.farout", DateTime.Now, DateTime.Now, true, true, 1, "bob knows his id", "default startpage", 4, ""));
 
 
         }
