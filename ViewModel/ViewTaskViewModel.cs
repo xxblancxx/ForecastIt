@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Forecast.it.Annotations;
 using Forecast.it.Model;
+using ForecastModel.Connection;
 
 
 namespace Forecast.it.ViewModel
@@ -15,12 +16,18 @@ namespace Forecast.it.ViewModel
     public class ViewTaskViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Model.Task> TaskCollection { get; set; }
+        Requester requester = new Requester();
 
         public ViewTaskViewModel()
         {
-            TaskCollection = new ObservableCollection<Model.Task>();
-            const string url = "https://api.forecast.it/api/v1/projects/1/tasks/1";
-            TaskCollection.Add(new Model.Task());
+            GetTasks();
+        }
+
+        public ObservableCollection<Model.Task> GetTasks()
+        {
+            var result = requester.GetRequestAsync<Model.Task>(EndPoints.Users);
+            TaskCollection = new ObservableCollection<Model.Task>(result.Result);
+            return TaskCollection;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

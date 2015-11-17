@@ -27,7 +27,7 @@ namespace Forecast.it.ViewModel
 
             private void CreateTasked(object obj)
             {
-                Task = new Tasked();
+                Task = new Model.Task();
                 Task.title = Title;
                 Task.estimate = estimate;
                 Task.status = status;
@@ -113,10 +113,10 @@ namespace Forecast.it.ViewModel
                     OnPropertyChanged("userStory");
                 }
             }
-            private Tasked _task;
+            private Model.Task _task;
 
 
-            public Tasked Task
+            public Model.Task Task
             {
                 get { return _task; }
                 set { _task = value; }
@@ -125,7 +125,7 @@ namespace Forecast.it.ViewModel
 
 
 
-            public async void CreateTask(Tasked task)
+            public async void CreateTask(Model.Task task)
             {
 
 
