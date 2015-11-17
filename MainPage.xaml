@@ -32,12 +32,17 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="Username" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Height" Grid.Column="1" Grid.ColumnSpan="3" FontSize="21.333" PlaceholderText="Username" Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="Username" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="Height" Grid.Column="1" Grid.ColumnSpan="3" FontSize="16" PlaceholderText="Username" Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TabIndex="0"/>
         <Image x:Name="Image_Logo_jpg" Grid.ColumnSpan="3" Grid.RowSpan="2" Source="Image/Logo.jpg" Grid.Row="1" Grid.Column="1" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Button x:Name="Login" Content="Login" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" Background="#FF61BA9C" Command="{Binding LoginCommand, Mode=OneWay}">
+        <Button x:Name="Login" Content="Login" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" Background="#FF61BA9C" Command="{Binding LoginCommand, Mode=OneWay}" TabIndex="3">
         </Button>
-        <Button x:Name="CreateUser" Content="Create User" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="6" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" Background="#FF61BA9C">
-            </Button>
-        <PasswordBox x:Name="passwordBox" d:LayoutOverrides="Width" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Password" Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="CreateUser" Content="Create User" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="6" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" Background="#FF61BA9C" TabIndex="4">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:NavigateToPageAction TargetPage="Forecast.it.View.CreateUserPage"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+        </Button>
+        <PasswordBox x:Name="passwordBox" d:LayoutOverrides="Width" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Password" Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18.667" TabIndex="1"/>
     </Grid>
 </Page>

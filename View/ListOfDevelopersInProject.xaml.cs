@@ -61,7 +61,7 @@ namespace Forecast.it.View
         /// <param name="sender">
         /// The source of the event; typically <see cref="NavigationHelper"/>
         /// </param>
-        /// <param name="e">Event data that provides both the navigation parameter passed to
+        /// <param name="e">Event data that provides both the navigation Parameter passed to
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
@@ -90,7 +90,7 @@ namespace Forecast.it.View
         /// Page specific logic should be placed in event handlers for the  
         /// <see cref="NavigationHelper.LoadState"/>
         /// and <see cref="NavigationHelper.SaveState"/>.
-        /// The navigation parameter is available in the LoadState method 
+        /// The navigation Parameter is available in the LoadState method 
         /// in addition to page state preserved during an earlier session.
         /// </para>
         /// </summary>

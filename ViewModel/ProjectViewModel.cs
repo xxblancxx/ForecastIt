@@ -19,8 +19,7 @@ namespace Forecast.it.ViewModel
 {
     public class ProjectViewModel : INotifyPropertyChanged
     {
-        private static int pid = (App.Current as App).project_id;
-        private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
+       private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -93,10 +92,10 @@ namespace Forecast.it.ViewModel
 
         public ProjectViewModel()
         {
-
+            Project = new Project();
             LoadOrders();
 
-            Project = new Project();
+           
         }
 
         private async void LoadOrders()
@@ -107,7 +106,7 @@ namespace Forecast.it.ViewModel
                 //27578cb2-8b15-417b-9b42-36ca8922f92c
                 client.BaseAddress = new Uri((App.Current as App).BaseAddress);
                 var byteArray =
-                    Encoding.UTF8.GetBytes((App.Current as App).username + ":" + (App.Current as App).password);
+                    Encoding.UTF8.GetBytes(_singleton.CurrentUsername +":"+_singleton.CurrentPassword);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                     Convert.ToBase64String(byteArray));
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -135,7 +134,41 @@ namespace Forecast.it.ViewModel
             }
         }
 
-    
+        public async void LoadOrderswithid(int passedid)
+        {
+
+            using (var client = new HttpClient())
+            {
+                //27578cb2-8b15-417b-9b42-36ca8922f92c
+                client.BaseAddress = new Uri((App.Current as App).BaseAddress);
+                var byteArray =
+                    Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                    Convert.ToBase64String(byteArray));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = client.GetAsync("projects/"+passedid).Result;
+
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    {
+                        var ordersList = new DataContractJsonSerializer(typeof(List<Project>));
+                        Projects =
+                            new ObservableCollection<Project>(
+                                (IEnumerable<Project>)ordersList.ReadObject(responseStream));
+                    }
+                }
+                catch (HttpRequestException)
+                {
+                    var msg =
+                        new MessageDialog("Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase);
+                    msg.ShowAsync();
+
+                }
+            }
+        }
 
 
 

@@ -18,6 +18,7 @@ using Forecast.it.Annotations;
 using Forecast.it.Common;
 using Forecast.it.Infrastructure;
 using Forecast.it.Model;
+using Forecast.it.View;
 
 namespace Forecast.it.ViewModel
 {
@@ -165,7 +166,9 @@ namespace Forecast.it.ViewModel
                         var response = await client.PostAsync("projects/"+pid+"/userStories", contentToPost);
                         response.EnsureSuccessStatusCode();
                        await new MessageDialog("New UserStory Added Successfully").ShowAsync();
-                        
+                        _singleton.CurrentPageView.Frame.Navigate(typeof(ListOfUserStories));
+
+
                     }
                     catch (Exception e)
                     {
