@@ -94,6 +94,8 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SingletonCommon.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="HelperClasses\EndPointConverter.cs" />
+    <Compile Include="HelperClasses\EndPoints.cs" />
     <Compile Include="Infrastructure\RouteCommand.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
