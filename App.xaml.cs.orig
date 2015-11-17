@@ -103,8 +103,13 @@ namespace Forecast.it
 
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
-                // Parameter
+<<<<<<< HEAD
+                // parameter
                 if (!rootFrame.Navigate(typeof(CreateTaskPage), e.Arguments))
+=======
+                // Parameter
+                if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+>>>>>>> origin/Tean4
                 {
                     throw new Exception("Failed to create initial page");
                 }

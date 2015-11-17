@@ -60,7 +60,7 @@ namespace Forecast.it.Annotations
   public sealed class StringFormatMethodAttribute : Attribute
   {
     /// <param name="formatParameterName">
-    /// Specifies which parameter of an annotated method should be treated as format-string
+    /// Specifies which Parameter of an annotated method should be treated as format-string
     /// </param>
     public StringFormatMethodAttribute(string formatParameterName)
     {
@@ -73,7 +73,7 @@ namespace Forecast.it.Annotations
   /// <summary>
   /// Indicates that the function argument should be string literal and match one
   /// of the parameters of the caller function. For example, ReSharper annotates
-  /// the parameter of <see cref="System.ArgumentNullException"/>
+  /// the Parameter of <see cref="System.ArgumentNullException"/>
   /// </summary>
   /// <example><code>
   /// public void Foo(string param) {
@@ -144,7 +144,7 @@ namespace Forecast.it.Annotations
   /// <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
   /// <item>Value    ::= true | false | null | notnull | canbenull</item>
   /// </list>
-  /// If method has single input parameter, it's name could be omitted.<br/>
+  /// If method has single input Parameter, it's name could be omitted.<br/>
   /// Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same)
   /// for method output means that the methos doesn't return normally.<br/>
   /// <c>canbenull</c> annotation is only applicable for output parameters.<br/>
@@ -165,7 +165,7 @@ namespace Forecast.it.Annotations
   /// public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
   /// </code></item>
   /// <item><code>
-  /// // A method that returns null if the parameter is null, and not null if the parameter is not null
+  /// // A method that returns null if the Parameter is null, and not null if the Parameter is not null
   /// [ContractAnnotation("null => null; notnull => notnull")]
   /// public object Transform(object data) 
   /// </code></item>
@@ -363,10 +363,10 @@ namespace Forecast.it.Annotations
   }
 
   /// <summary>
-  /// Tells code analysis engine if the parameter is completely handled
-  /// when the invoked method is on stack. If the parameter is a delegate,
+  /// Tells code analysis engine if the Parameter is completely handled
+  /// when the invoked method is on stack. If the Parameter is a delegate,
   /// indicates that delegate is executed while the method is executed.
-  /// If the parameter is an enumerable, indicates that it is enumerated
+  /// If the Parameter is an enumerable, indicates that it is enumerated
   /// while the method is executed
   /// </summary>
   [AttributeUsage(AttributeTargets.Parameter, Inherited = true)]
@@ -387,7 +387,7 @@ namespace Forecast.it.Annotations
   public sealed class PureAttribute : Attribute { }
 
   /// <summary>
-  /// Indicates that a parameter is a path to a file or a folder
+  /// Indicates that a Parameter is a path to a file or a folder
   /// within a web project. Path can be relative or absolute,
   /// starting from web root (~)
   /// </summary>
@@ -442,7 +442,7 @@ namespace Forecast.it.Annotations
   }
   
   /// <summary>
-  /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+  /// ASP.NET MVC attribute. If applied to a Parameter, indicates that the Parameter
   /// is an MVC action. If applied to a method, the MVC action name is calculated
   /// implicitly from the context. Use this attribute for custom wrappers similar to
   /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
@@ -460,7 +460,7 @@ namespace Forecast.it.Annotations
   }
 
   /// <summary>
-  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
+  /// ASP.NET MVC attribute. Indicates that a Parameter is an MVC area.
   /// Use this attribute for custom wrappers similar to
   /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
   /// </summary>
@@ -477,8 +477,8 @@ namespace Forecast.it.Annotations
   }
 
   /// <summary>
-  /// ASP.NET MVC attribute. If applied to a parameter, indicates that
-  /// the parameter is an MVC controller. If applied to a method,
+  /// ASP.NET MVC attribute. If applied to a Parameter, indicates that
+  /// the Parameter is an MVC controller. If applied to a method,
   /// the MVC controller name is calculated implicitly from the context.
   /// Use this attribute for custom wrappers similar to 
   /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>
@@ -496,7 +496,7 @@ namespace Forecast.it.Annotations
   }
 
   /// <summary>
-  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC Master.
+  /// ASP.NET MVC attribute. Indicates that a Parameter is an MVC Master.
   /// Use this attribute for custom wrappers similar to
   /// <c>System.Web.Mvc.Controller.View(String, String)</c>
   /// </summary>
@@ -504,7 +504,7 @@ namespace Forecast.it.Annotations
   public sealed class AspMvcMasterAttribute : Attribute { }
 
   /// <summary>
-  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC model type.
+  /// ASP.NET MVC attribute. Indicates that a Parameter is an MVC model type.
   /// Use this attribute for custom wrappers similar to
   /// <c>System.Web.Mvc.Controller.View(String, Object)</c>
   /// </summary>
@@ -512,8 +512,8 @@ namespace Forecast.it.Annotations
   public sealed class AspMvcModelTypeAttribute : Attribute { }
 
   /// <summary>
-  /// ASP.NET MVC attribute. If applied to a parameter, indicates that
-  /// the parameter is an MVC partial view. If applied to a method,
+  /// ASP.NET MVC attribute. If applied to a Parameter, indicates that
+  /// the Parameter is an MVC partial view. If applied to a method,
   /// the MVC partial view name is calculated implicitly from the context.
   /// Use this attribute for custom wrappers similar to
   /// <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>
@@ -529,7 +529,7 @@ namespace Forecast.it.Annotations
   public sealed class AspMvcSupressViewErrorAttribute : Attribute { }
 
   /// <summary>
-  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
+  /// ASP.NET MVC attribute. Indicates that a Parameter is an MVC display template.
   /// Use this attribute for custom wrappers similar to 
   /// <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>
   /// </summary>
@@ -537,7 +537,7 @@ namespace Forecast.it.Annotations
   public sealed class AspMvcDisplayTemplateAttribute : Attribute { }
 
   /// <summary>
-  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
+  /// ASP.NET MVC attribute. Indicates that a Parameter is an MVC editor template.
   /// Use this attribute for custom wrappers similar to
   /// <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>
   /// </summary>
@@ -545,7 +545,7 @@ namespace Forecast.it.Annotations
   public sealed class AspMvcEditorTemplateAttribute : Attribute { }
 
   /// <summary>
-  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
+  /// ASP.NET MVC attribute. Indicates that a Parameter is an MVC template.
   /// Use this attribute for custom wrappers similar to
   /// <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>
   /// </summary>
@@ -553,7 +553,7 @@ namespace Forecast.it.Annotations
   public sealed class AspMvcTemplateAttribute : Attribute { }
 
   /// <summary>
-  /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+  /// ASP.NET MVC attribute. If applied to a Parameter, indicates that the Parameter
   /// is an MVC view. If applied to a method, the MVC view name is calculated implicitly
   /// from the context. Use this attribute for custom wrappers similar to
   /// <c>System.Web.Mvc.Controller.View(Object)</c>
@@ -562,8 +562,8 @@ namespace Forecast.it.Annotations
   public sealed class AspMvcViewAttribute : PathReferenceAttribute { }
 
   /// <summary>
-  /// ASP.NET MVC attribute. When applied to a parameter of an attribute,
-  /// indicates that this parameter is an MVC action name
+  /// ASP.NET MVC attribute. When applied to a Parameter of an attribute,
+  /// indicates that this Parameter is an MVC action name
   /// </summary>
   /// <example><code>
   /// [ActionName("Foo")]
@@ -605,7 +605,7 @@ namespace Forecast.it.Annotations
   // Razor attributes
 
   /// <summary>
-  /// Razor attribute. Indicates that a parameter or a method is a Razor section.
+  /// Razor attribute. Indicates that a Parameter or a method is a Razor section.
   /// Use this attribute for custom wrappers similar to 
   /// <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>
   /// </summary>
