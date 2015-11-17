@@ -161,8 +161,7 @@ namespace Forecast.it.Model
 
                     }
                     // if string with JSON data is not empty, deserialize it to class and return its instance 
-                    return !string.IsNullOrEmpty(jsonData) ?
-                        await System.Threading.Tasks.Task.Run(() => JsonConvert.DeserializeObject<List<T>>(jsonData)) : new List<T>();
+                    return JsonConvert.DeserializeObject<List<T>>(jsonData);
                 }
             }
         }
