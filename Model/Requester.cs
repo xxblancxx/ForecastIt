@@ -28,7 +28,7 @@ namespace Forecast.it.Model
 
        
 
-        public Requester(string username, string password)
+        public Requester()
         {
             _username = _singleton.CurrentUsername;
             _password = _singleton.CurrentPassword;
