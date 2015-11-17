@@ -21,7 +21,7 @@ namespace Forecast.it.Model
        public int defaulRrole { get; set; }
        public string externalEmployeeId { get; set; }
        public string startPage { get; set; }
-       public int integrationTimelogId { get; set; }
+       public object integrationTimelogId { get; set; }
 
        public User()
        {
