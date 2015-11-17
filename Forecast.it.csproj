@@ -94,6 +94,8 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SingletonCommon.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="HelperClasses\EndPointConverter.cs" />
+    <Compile Include="HelperClasses\EndPoints.cs" />
     <Compile Include="Infrastructure\RouteCommand.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -101,12 +103,13 @@
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\Requester.cs" />
     <Compile Include="Model\ScrumStage.cs" />
+    <Compile Include="ViewModel\CreateUserViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="ViewModel\ScrumStageViewModel.cs" />
     <Compile Include="Model\Sprint.cs" />
     <Compile Include="Model\Tag.cs" />
-    <Compile Include="Model\Tasked.cs" />
+    <Compile Include="Model\Task.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserStory.cs" />
     <Compile Include="Model\UserStoryType.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="ViewModel\TaskViewModel.cs" />
     <Compile Include="ViewModel\UserStoryTypeViewModel.cs" />
     <Compile Include="ViewModel\UserStoryViewModel.cs" />
+    <Compile Include="ViewModel\ViewTaskViewModel.cs" />
     <Compile Include="View\AllDevelopersListPage.xaml.cs">
       <DependentUpon>AllDevelopersListPage.xaml</DependentUpon>
     </Compile>

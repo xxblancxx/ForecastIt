@@ -5,9 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:ViewModel="using:Forecast.it.ViewModel"
     x:Class="Forecast.it.View.AllDevelopersListPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <ViewModel:SeeDevelopersViewModel/>
+    </Page.DataContext>
     <Grid x:Name="LayoutRoot" Background="#FF2E1F3C">
 
         <Grid.ChildrenTransitions>
@@ -22,7 +26,7 @@
         </Grid.RowDefinitions>
 
         <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" HorizontalAlignment="Left" Margin="0,0.084,0,-22.417" d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopPosition, BottomPosition"/>
-        <ListView x:Name="listView" Grid.Row="1" Margin="100,22.333,0,100">
+        <ListView x:Name="listView" Grid.Row="1" Margin="100,22.333,0,100" ItemsSource="{Binding userCollection}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>

@@ -9,8 +9,8 @@ using Forecast.it.Annotations;
 
 namespace Forecast.it.Model
 {
-   public class Tasked
-    { 
+   public class Task
+    {
         public string url { get; set; }
         public int id { get; set; }
         public string title { get; set; }
@@ -33,12 +33,12 @@ namespace Forecast.it.Model
         public DateTime createdOn { get; set; }
         public int createdBy { get; set; }
 
-       public Tasked()
+       public Task()
        {
            
        }
 
-       public Tasked(string url, int id, string title, string description, int estimate, int timeLeft, int projectPhase, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
+       public Task(string url, int id, string title, string description, int estimate, int timeLeft, int projectPhase, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
        {
            this.url = url;
            this.id = id;
@@ -63,9 +63,12 @@ namespace Forecast.it.Model
            this.createdBy = createdBy;
        }
 
+
        public override string ToString()
        {
-           return $"createdBy: {createdBy}, createdOn: {createdOn}, deadline: {deadline}, description: {description}, estimate: {estimate}, id: {id}, integrationTfsId: {integrationTfsId}, integrationTimelogGuid: {integrationTimelogGuid}, integrationTimelogId: {integrationTimelogId}, integrationTimelogTask: {integrationTimelogTask}, modifiedBy: {modifiedBy}, modifiedOn: {modifiedOn}, owners: {owners}, projectPhase: {projectPhase}, status: {status}, tags: {tags}, timeLeft: {timeLeft}, title: {title}, url: {url}, userStory: {userStory}, waterfallStatus: {waterfallStatus}";
+           return $"url: {url}, id: {id}, title: {title}, description: {description}, estimate: {estimate}, timeLeft: {timeLeft}, projectPhase: {projectPhase}, status: {status}, waterfallStatus: {waterfallStatus}, owners: {owners}, userStory: {userStory}, deadline: {deadline}, tags: {tags}, integrationTimelogTask: {integrationTimelogTask}, integrationTfsId: {integrationTfsId}, integrationTimelogId: {integrationTimelogId}, integrationTimelogGuid: {integrationTimelogGuid}, modifiedOn: {modifiedOn}, modifiedBy: {modifiedBy}, createdOn: {createdOn}, createdBy: {createdBy}";
        }
+
+      
     }
 }

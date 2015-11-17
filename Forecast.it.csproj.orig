@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -107,7 +107,7 @@
     <Compile Include="ViewModel\ScrumStageViewModel.cs" />
     <Compile Include="Model\Sprint.cs" />
     <Compile Include="Model\Tag.cs" />
-    <Compile Include="Model\Tasked.cs" />
+    <Compile Include="Model\Task.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserStory.cs" />
     <Compile Include="Model\UserStoryType.cs" />
@@ -116,9 +116,9 @@
     <Compile Include="ViewModel\SeeDevelopersViewModel.cs" />
     <Compile Include="ViewModel\SprintViewModel.cs" />
     <Compile Include="ViewModel\TagViewModel.cs" />
-    <Compile Include="ViewModel\TaskViewModel.cs" />
     <Compile Include="ViewModel\UserStoryTypeViewModel.cs" />
     <Compile Include="ViewModel\UserStoryViewModel.cs" />
+    <Compile Include="ViewModel\ViewTaskViewModel.cs" />
     <Compile Include="View\AllDevelopersListPage.xaml.cs">
       <DependentUpon>AllDevelopersListPage.xaml</DependentUpon>
     </Compile>
@@ -560,7 +560,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
->>>>>>> origin/Tean4
+>>>>>>> 4babf1b78209146d24b6f06a9b2847080a9404eb
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -11,19 +11,16 @@ using Forecast.it.Model;
 
 namespace Forecast.it.ViewModel
 {
-    public class SeeDevelopersViewModel : INotifyPropertyChanged
+    public class ViewTaskViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<User> userCollection { get; set; }
+        public ObservableCollection<Tasked> TaskCollection { get; set; }
 
-        public SeeDevelopersViewModel()
+        public ViewTaskViewModel()
         {
-            userCollection = new ObservableCollection<User>();
-            const string url = "https://api.forecast.it/api/v1/users/";
-            userCollection.Add(new User(url, 1, "bob", "bobsen", "BB", "bob@email.farout", DateTime.Now, DateTime.Now, true, true, 1, "bob knows his id", "default startpage", 4, ""));
-
-
+            TaskCollection = new ObservableCollection<Tasked>();
+            const string url = "https://api.forecast.it/api/v1/projects/1/tasks/1";
+            TaskCollection.Add(new Tasked());
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -31,7 +28,6 @@ namespace Forecast.it.ViewModel
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         }
     }
 }
