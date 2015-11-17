@@ -17,7 +17,7 @@ namespace Forecast.it.ViewModel
     class TaskViewModel:INotifyPropertyChanged
     {
         
-         //private static int pid = (App.Current as App).project_id;
+         private static int pid = (App.Current as App).project_id;
             public TaskViewModel()
             {
 
@@ -133,7 +133,7 @@ namespace Forecast.it.ViewModel
                 {
                     client.BaseAddress = new Uri("https://api.forecast.it/api/v1/");
 
-                    var byteArray = Encoding.UTF8.GetBytes("gc1994129@gmail.com:Onepiece1994.");
+                    var byteArray = Encoding.UTF8.GetBytes((App.Current as App).username + ":" + (App.Current as App).password);
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
                     //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
@@ -157,7 +157,7 @@ namespace Forecast.it.ViewModel
 
                     try
                     {
-                        var response = await client.PostAsync("projects/712/tasks", contentToPost);
+                        var response = await client.PostAsync("projects/"+pid+"/tasks", contentToPost);
                         response.EnsureSuccessStatusCode();
                         await new MessageDialog("New Task Added Successfully").ShowAsync();
 
