@@ -9,8 +9,8 @@ using Forecast.it.Annotations;
 
 namespace Forecast.it.Model
 {
-   public class Tasked:INotifyPropertyChanged
-    {
+   public class Tasked
+    { 
         public string url { get; set; }
         public int id { get; set; }
         public string title { get; set; }
@@ -33,20 +33,39 @@ namespace Forecast.it.Model
         public DateTime createdOn { get; set; }
         public int createdBy { get; set; }
 
-       public event PropertyChangedEventHandler PropertyChanged;
-
-       [NotifyPropertyChangedInvocator]
-       protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+       public Tasked()
        {
-           PropertyChangedEventHandler handler = PropertyChanged;
-           if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+           
        }
-       protected void RaisePropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
+
+       public Tasked(string url, int id, string title, string description, int estimate, int timeLeft, int projectPhase, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
+       {
+           this.url = url;
+           this.id = id;
+           this.title = title;
+           this.description = description;
+           this.estimate = estimate;
+           this.timeLeft = timeLeft;
+           this.projectPhase = projectPhase;
+           this.status = status;
+           this.waterfallStatus = waterfallStatus;
+           this.owners = owners;
+           this.userStory = userStory;
+           this.deadline = deadline;
+           this.tags = tags;
+           this.integrationTimelogTask = integrationTimelogTask;
+           this.integrationTfsId = integrationTfsId;
+           this.integrationTimelogId = integrationTimelogId;
+           this.integrationTimelogGuid = integrationTimelogGuid;
+           this.modifiedOn = modifiedOn;
+           this.modifiedBy = modifiedBy;
+           this.createdOn = createdOn;
+           this.createdBy = createdBy;
+       }
+
+       public override string ToString()
+       {
+           return $"createdBy: {createdBy}, createdOn: {createdOn}, deadline: {deadline}, description: {description}, estimate: {estimate}, id: {id}, integrationTfsId: {integrationTfsId}, integrationTimelogGuid: {integrationTimelogGuid}, integrationTimelogId: {integrationTimelogId}, integrationTimelogTask: {integrationTimelogTask}, modifiedBy: {modifiedBy}, modifiedOn: {modifiedOn}, owners: {owners}, projectPhase: {projectPhase}, status: {status}, tags: {tags}, timeLeft: {timeLeft}, title: {title}, url: {url}, userStory: {userStory}, waterfallStatus: {waterfallStatus}";
+       }
     }
 }
