@@ -51,7 +51,7 @@ namespace Forecast.it.ViewModel
             }
            initials = initials.ToUpper();
 
-            User newUser = new User(FirstName, LastName, initials, Email, false, "Dashboard", 0);
+            User newUser = new User(FirstName, LastName, initials, Email, false, "Dashboard", 1368);
             req.PostRequest(newUser, EndPoints.Users);
         }
 
