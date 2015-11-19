@@ -48,7 +48,7 @@
             <Grid>
                 <Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="PointerPressed">
-                        <Core:NavigateToPageAction TargetPage="Forecast.it.View.ViewProjectDetails"/>
+                        <Core:NavigateToPageAction TargetPage="Forecast.it.View.ListOfUserStories"/>
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>
                 <Grid.RowDefinitions>

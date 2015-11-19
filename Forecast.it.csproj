@@ -122,6 +122,7 @@
     <Compile Include="ViewModel\UserStoryTypeViewModel.cs" />
     <Compile Include="ViewModel\UserStoryViewModel.cs" />
     <Compile Include="ViewModel\ViewTaskViewModel.cs" />
+    <Compile Include="ViewModel\ViewUserStoryViewModel.cs" />
     <Compile Include="View\AllDevelopersListPage.xaml.cs">
       <DependentUpon>AllDevelopersListPage.xaml</DependentUpon>
     </Compile>
