@@ -32,8 +32,11 @@ namespace Forecast.it.Model
      
        public List<int> owners { get; set; }
        public List<int> tags { get; set; }
-       
-       
-       
+
+        public override string ToString()
+        {
+            return $" {title}";
+        }
+
     }
 }
