@@ -113,11 +113,10 @@ namespace Forecast.it.View
 
 
         #endregion
-        private void MyClick(object sender, ItemClickEventArgs e)
-        {
-            
-            Frame.Navigate(typeof (ViewProjectDetails),e.ClickedItem);
-        }
 
+        private void ListView_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frame.Navigate(typeof (ViewProjectDetails), e.ClickedItem);
+        }
     }
 }
