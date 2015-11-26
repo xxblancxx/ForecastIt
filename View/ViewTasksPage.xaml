@@ -44,7 +44,14 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="Title_text" TextWrapping="Wrap" Text="{Binding TaskCollection[0].description}" d:LayoutOverrides="Width, Height"/>
+                <TextBlock x:Name="Title_text" TextWrapping="Wrap" Text="{Binding TaskCollection[0].description}" d:LayoutOverrides="Width, Height">
+                	<Interactivity:Interaction.Behaviors>
+                		<Core:EventTriggerBehavior EventName="PointerPressed">
+                			<Core:InvokeCommandAction Command="{Binding SetTaskIdCommand}"/>
+                			<Core:NavigateToPageAction TargetPage="Forecast.it.View.EditTaskPage"/>
+                		</Core:EventTriggerBehavior>
+                	</Interactivity:Interaction.Behaviors>
+                </TextBlock>
                 <TextBlock x:Name="Estimation" TextWrapping="Wrap" Text="Estimation:" d:LayoutOverrides="Width, Height" Grid.Column="2"/>
                 <TextBlock x:Name="EstimatedHours" Grid.RowSpan="6" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Column="3" Text="{Binding TaskCollection[0].estimate}" Margin="4,0,0,0"/>
             </Grid>
