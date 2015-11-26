@@ -116,7 +116,7 @@ namespace Forecast.it.View
 
         private void ListView_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            Frame.Navigate(typeof (ViewProjectDetails), e.ClickedItem);
+            Frame.Navigate(typeof (ListOfUserStories), e.ClickedItem);
         }
     }
 }

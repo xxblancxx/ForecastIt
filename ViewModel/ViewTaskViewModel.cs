@@ -54,8 +54,11 @@ namespace Forecast.it.ViewModel
 
         public ObservableCollection<Model.Task> GetTasks()
         {
-            var result = requester.GetRequestAsync<Model.Task>(EndPoints.Users);
-            TaskCollection = new ObservableCollection<Model.Task>(result.Result);
+            var result = requester.GetRequestAsync<Model.Task>(EndPoints.Tasks, 712);
+            if (result.Result != null)
+            {
+                TaskCollection = new ObservableCollection<Model.Task>(result.Result);
+            }
             return TaskCollection;
         }
 

@@ -114,7 +114,7 @@ namespace Forecast.it.View
             if (CmbProject.SelectedItem != null)
                 id = Convert.ToInt32(CmbProject.SelectedValue);
             (App.Current as App).project_id = id;
-            this.Frame.Navigate(typeof (CreateUserStoryPage));
+            this.Frame.Navigate(typeof (ListOfUserStories));
         }
 
         private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)

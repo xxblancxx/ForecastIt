@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
 
         <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" HorizontalAlignment="Left" Margin="0,0.084,0,-22.417" d:LayoutOverrides="HorizontalAlignment, LeftMargin, RightMargin, TopPosition, BottomPosition"/>
-        <ListView x:Name="listView" Grid.Row="1" Margin="100,22.5,0,99.833" ItemsSource="{Binding TaskCollection}">
+        <ListView x:Name="listView" Grid.Row="1" Margin="100,22.5,0,99.833" ItemsSource="{Binding TaskCollection}" SelectionChanged="listView_SelectionChanged">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -52,7 +52,7 @@
                 		</Core:EventTriggerBehavior>
                 	</Interactivity:Interaction.Behaviors>
                 </TextBlock>
-                <TextBlock x:Name="Estimation" TextWrapping="Wrap" Text="Estimation:" d:LayoutOverrides="Width, Height" Grid.Column="2"/>
+                <TextBlock x:Name="Estimation" TextWrapping="Wrap" Text="Estimation:" Grid.Column="2" Margin="0,0,0.333,-0.333" Grid.RowSpan="6" VerticalAlignment="Top"/>
                 <TextBlock x:Name="EstimatedHours" Grid.RowSpan="6" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Column="3" Text="{Binding TaskCollection[0].estimate}" Margin="4,0,0,0"/>
             </Grid>
         </ListView>

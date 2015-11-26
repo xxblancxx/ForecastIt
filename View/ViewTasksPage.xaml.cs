@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Forecast.it.Model;
+using Forecast.it.ViewModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,6 +27,9 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class ListOfTasksPage : Page
     {
+        Model.Task task = new Model.Task();
+        public object obj;
+        int id;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -106,6 +111,20 @@ namespace Forecast.it.View
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
+
+
+
         #endregion
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listView.SelectedItem != null)
+            {
+                obj = listView.SelectedValue;
+                task = obj as Model.Task;
+                EditTaskViewModel.StaticTask = task;
+                this.Frame.Navigate(typeof(EditTaskPage));
+            }
+        }
     }
 }

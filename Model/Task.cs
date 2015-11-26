@@ -38,6 +38,14 @@ namespace Forecast.it.Model
            
        }
 
+       public Task(string title, string description, int estimate, int status)
+       {
+           this.title = title;
+           this.description = description;
+           this.estimate = estimate;
+           this.status = status;
+       }
+
        public Task(string url, int id, string title, string description, int estimate, int timeLeft, int projectPhase, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
        {
            this.url = url;
