@@ -8,48 +8,56 @@
     x:Class="Forecast.it.View.CreateTaskPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-	<Grid x:Name="LayoutRoot" Background="#FF2E1F3C">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="100"/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition Width="100"/>
-		</Grid.ColumnDefinitions>
+    <Grid x:Name="LayoutRoot" Background="#FF2E1F3C">
+        <Grid.DataContext>
+            <ViewModel:TaskViewModel/>
+        </Grid.DataContext>
 
-		<Grid.ChildrenTransitions>
-			<TransitionCollection>
-				<EntranceThemeTransition/>
-			</TransitionCollection>
-		</Grid.ChildrenTransitions>
 
-		<Grid.RowDefinitions>
-			<RowDefinition Height="100"/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
 
-		<!-- Title Panel -->
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
 
-		<!--TODO: Content should be placed within the following grid-->
-		<Grid.DataContext>
-			<ViewModel:TaskViewModel/>
-		</Grid.DataContext>
-		<Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-		<AppBarButton x:Name="ProjectOptionsButton" HorizontalAlignment="Stretch" Icon="ShowResults" Label="Options" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Column="4"/>
-		<TextBox x:Name="USTitle" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" Grid.ColumnSpan="3" PlaceholderText="Title" VerticalAlignment="Top" Text="{Binding Title, Mode=TwoWay}"/>
-		<TextBox x:Name="USDes" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="3" Grid.ColumnSpan="3" PlaceholderText="Status" Text="{Binding status, Mode=TwoWay}"/>
-		<TextBox x:Name="USEst" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="4" Grid.ColumnSpan="3" PlaceholderText="Estimation" Text="{Binding projectPhase, Mode=TwoWay}"/>
-		<TextBox x:Name="USAcceptanceCriteria" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="5" Grid.ColumnSpan="3" PlaceholderText="Assigned" Text="{Binding userStory, Mode=TwoWay}"/>
-		<Button x:Name="USSaveButton" Content="Save" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="7" Background="#FF61BA9C" Command="{Binding AddTask, Mode=OneWay}"/>
-		<Button x:Name="USCancelButton" Content="Cancel" HorizontalAlignment="Right" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="7" Grid.Column="1" Background="#FF61BA9C" Grid.ColumnSpan="2"/>
-		<TextBlock x:Name="textBlock" Grid.Row="1" TextWrapping="Wrap" Text="Create Task" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="3" FontSize="29.333"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-	</Grid>
+        <!-- Title Panel -->
+
+        <!--TODO: Content should be placed within the following grid-->
+
+        <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+        <AppBarButton x:Name="ProjectOptionsButton" HorizontalAlignment="Stretch" Icon="ShowResults" Label="Options" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Column="4"/>
+
+        <TextBox x:Name="TaskTitle" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Title" VerticalAlignment="Top" Text="{Binding Title, Mode=TwoWay}"/>
+        <TextBox x:Name="TaskStatus" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Status" Text="{Binding status, Mode=TwoWay}"/>
+        <TextBox x:Name="ProjectPhase" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" PlaceholderText="Estimation" Text="{Binding projectPhase, Mode=TwoWay}"/>
+
+        
+        <Button x:Name="USSaveButton" Content="Save" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="7" Background="#FF61BA9C" Command="{Binding AddTask, Mode=OneWay}"/>
+        <Button x:Name="USCancelButton" Content="Cancel" HorizontalAlignment="Right" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.Row="7" Grid.Column="1" Background="#FF61BA9C" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="ComboBoxUserStories" Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="1" d:LayoutOverrides="Height" ItemsSource="{Binding UserStorys}"/>
+
+
+
+
+    </Grid>
 </Page>
