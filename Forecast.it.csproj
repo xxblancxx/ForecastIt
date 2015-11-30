@@ -100,11 +100,17 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BusinessUnit.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectType.cs" />
     <Compile Include="Model\Requester.cs" />
     <Compile Include="Model\ScrumStage.cs" />
+    <Compile Include="ViewModel\BusinessUnitViewModel.cs" />
     <Compile Include="ViewModel\CreateUserViewModel.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ProjectTypeViewModel.cs" />
     <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="ViewModel\ScrumStageViewModel.cs" />
     <Compile Include="Model\Sprint.cs" />

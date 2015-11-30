@@ -14,6 +14,7 @@ using Windows.UI.Popups;
 using Forecast.it.Common;
 using Forecast.it.Infrastructure;
 using Forecast.it.Model;
+using Forecast.it.View;
 
 namespace Forecast.it.ViewModel
 {
@@ -92,6 +93,7 @@ namespace Forecast.it.ViewModel
 
         public ProjectViewModel()
         {
+            AddOrder = new RoutedCommand(CreateOrder);
             Project = new Project();
             LoadOrders();
 
@@ -170,6 +172,49 @@ namespace Forecast.it.ViewModel
             }
         }
 
+        async void CreateOrder(object o)
+        {
+
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri((App.Current as App).BaseAddress);
+
+                var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+
+                //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                using (var memStream = new MemoryStream())
+                {
+                    var data = new DataContractJsonSerializer(typeof(Project));
+                    data.WriteObject(memStream, Project);
+                    memStream.Position = 0;
+                    var contentToPost = new StreamContent(memStream);
+                    contentToPost.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    try
+                    {
+                        var response = await client.PostAsync("projects/", contentToPost);
+                        response.EnsureSuccessStatusCode();
+                        await new MessageDialog("New UserStory Added Successfully").ShowAsync();
+                        _singleton.CurrentPageView.Frame.Navigate(typeof(ProjectListPage));
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        await new MessageDialog(e.Message).ShowAsync();
+
+
+                    }
+                }
+            }
+
+
+        }
 
 
     }

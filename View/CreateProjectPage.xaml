@@ -5,18 +5,17 @@
     xmlns:local="using:Forecast.it.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:Forecast.it.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="LayoutRoot" Background="#FF2E1F3C">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="100"/>
-        </Grid.ColumnDefinitions>
+    <Page.Resources>
+        <!--  -->
+        <viewModel:ProjectViewModel x:Name="uvm"></viewModel:ProjectViewModel>
 
+    </Page.Resources>
+    <Grid Background="#FF2E1F3C"
+      DataContext="{Binding Source={StaticResource uvm}}"  >
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -25,26 +24,146 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
-        <Image x:Name="ms_appx____Image_Logo_jpg" Source="ms-appx:///Image/Logo.jpg" Stretch="Fill" Width="130" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
-        <AppBarButton x:Name="ProjectOptionsButton" HorizontalAlignment="Stretch" Icon="ShowResults" Label="Options" VerticalAlignment="Stretch" Grid.Column="4" d:LayoutOverrides="Width, Height"/>
-        <TextBox x:Name="ProjectNameBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" Grid.Column="1" PlaceholderText="Project Name" Grid.ColumnSpan="3" MinHeight="40"/>
-        <TextBox x:Name="StartDateBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" PlaceholderText="Start date" Grid.ColumnSpan="3" MinHeight="40"/>
-        <TextBox x:Name="EndDateBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Column="1" Grid.Row="4" PlaceholderText="End date" Grid.ColumnSpan="3" MinHeight="40"/>
-        <TextBox x:Name="ProjectDescribtionBox" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Stretch" PlaceholderText="Description" Grid.Column="1" MinHeight="115"/>
-        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="8" Background="#FF61BA9C" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="2"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="8" Grid.Column="3" Background="#FF61BA9C" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="2"/>
+
 
         <!-- Title Panel -->
+        <Grid Grid.Row="0"  >
+            <Image Source="/Image/PageLogo.jpg" Height="63" HorizontalAlignment="Left" Width="131" VerticalAlignment="Center"/>
+            <Button x:Name="btncreat" Height="66" Width="100" HorizontalAlignment="Center">
+                <Button.Flyout>
+
+                    <MenuFlyout  >
+                        <MenuFlyoutItem x:Name="userstory" Text="UserStory" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
+                        <MenuFlyoutItem x:Name="task" Text="Task" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
+                        <MenuFlyoutItem x:Name="project" Text="Project" FontFamily="Calibri" FontSize="20" Click="OnFlyoutButtonClicked" />
+                    </MenuFlyout>
+
+
+                </Button.Flyout>
+
+
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Image/CreateNew.jpg"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnoption" Height="59" RenderTransformOrigin="0.917,-0.147" Width="85" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button.Flyout>
+                    <MenuFlyout  >
+                        <MenuFlyoutItem x:Name="projectsetting" Text="ProjectSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="administration" Text="Administration" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="usersetting" Text="UserSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="support" Text="Support" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="aboutforecast" Text="AboutForecast" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="logout" Text="Logout" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+
+
+                    </MenuFlyout>
+                </Button.Flyout>
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Image/OptionButton.jpg"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
 
         <!--TODO: Content should be placed within the following grid-->
+        <ScrollViewer x:Name="ContentGrid" VerticalScrollBarVisibility="Auto" 
+                      Grid.Row="1" Margin="0,0.167,0,78" >
+            <Grid x:Name="ContentRoot"
+              DataContext="{Binding Path=Project,Mode=TwoWay}" >
+
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Create Project" VerticalAlignment="Top" FontFamily="Calibri" FontSize="18" Foreground="#FF61BA9C" Margin="10,0,0,0"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Project Id" VerticalAlignment="Top" FontFamily="Calibri" FontSize="25" Margin="10,26,0,0" />
+                <TextBlock HorizontalAlignment="Left" Margin="10,71,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="25" />
+                <TextBlock HorizontalAlignment="Left" Margin="13,159,0,475" TextWrapping="Wrap" Text="Type" FontFamily="Calibri" FontSize="25"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,296,0,0" TextWrapping="Wrap" Text="Project Owner" VerticalAlignment="Top" FontFamily="Calibri" FontSize="25" />
+                <TextBlock HorizontalAlignment="Left" Margin="13,116,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" FontFamily="Calibri" FontSize="25" RenderTransformOrigin="0.544,-6.885"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,339,0,0" TextWrapping="Wrap" Text="UseCost" VerticalAlignment="Top" FontFamily="Calibri" FontSize="25"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,391,0,0" TextWrapping="Wrap" Text="Exc.Fra Stat" FontSize="25" VerticalAlignment="Top"  />
+                <TextBlock HorizontalAlignment="Left" Margin="10,249,0,0" TextWrapping="Wrap" Text="Customer" VerticalAlignment="Top" FontFamily="Calibri" FontSize="25"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,208,0,0" TextWrapping="Wrap" Text="Bussiness Unit" FontFamily="Calibri" FontSize="25" VerticalAlignment="Top"  />
+                <TextBox x:Name="txt_title" Margin="157,21,10,0" TextWrapping="Wrap"  Text="{Binding projectIdString,Mode=TwoWay, FallbackValue=Title of UserStory}" VerticalAlignment="Top" FontFamily="Calibri" FontSize="15"  />
+                <TextBox x:Name="txt_description" Margin="157,66,10,0" TextWrapping="Wrap" Text="{Binding name,Mode=TwoWay, FallbackValue=UserStory Description}" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="15" />
+
+
+                <ComboBox x:Name="cmb_prjtype"  
+            DisplayMemberPath="name"
+            SelectedItem="{Binding projectType}"
+            SelectedValuePath="id"
+            SelectedValue="{Binding projectType,Mode=TwoWay}" Margin="157,147,10,465"  FontFamily="Calibri" FontSize="15" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"  />
+
+                <ComboBox x:Name="cmb_owner" 
+                         
+            DisplayMemberPath="Content"
+            SelectedItem="{Binding projectOwner}"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding projectOwner,Mode=TwoWay}" Margin="157,282,10,336"  FontFamily="Calibri" FontSize="15" />
+
+                <ComboBox x:Name="cmb_status" 
+            DisplayMemberPath="Content"
+            SelectedItem="{Binding projectStatus}"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding projectStatus,Mode=TwoWay}" Margin="157,101,10,509"  FontFamily="Calibri" FontSize="15" AllowDrop="True" DropDownOpened="OnDropDownOpened" DropDownClosed="OnDropDownClosed"  />
+
+
+                <TextBlock HorizontalAlignment="Left" Margin="10,441,0,0" TextWrapping="Wrap" Text="UseALA" FontSize="25" VerticalAlignment="Top"  />
+
+                <ComboBox x:Name="cmb_bu" 
+                	DisplayMemberPath="name"
+                	SelectedItem="{Binding businessUnit}"
+                	SelectedValuePath="id"
+                	SelectedValue="{Binding businessUnit, Mode=TwoWay}" Margin="156,194,11,418"  FontFamily="Calibri" FontSize="15" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"  />
+
+                <ComboBox x:Name="cmb_customer" 
+                	DisplayMemberPath="name"
+                	SelectedItem="{Binding customer}"
+                	SelectedValuePath="id"
+                	SelectedValue="{Binding customer, Mode=TwoWay}" Margin="156,234,11,378"  FontFamily="Calibri" FontSize="15" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"  />
+
+                <ComboBox x:Name="cmb_usecost" 
+                	DisplayMemberPath="Content"
+                	SelectedItem="{Binding useCost}"
+                    SelectedValuePath="Content"
+                	SelectedValue="{Binding useCost, Mode=TwoWay}" Margin="157,327,10,291"  FontFamily="Calibri" FontSize="15" />
+
+                <ComboBox x:Name="cmb_excstat" 
+                	DisplayMemberPath="Name"
+                	SelectedItem="{Binding excludeFromStatistics}"
+                    SelectedValuePath="Name"      
+                	SelectedValue="{Binding excludeFromStatistics, Mode=OneWay}" Margin="156,377,11,241"  FontFamily="Calibri" FontSize="15" >
+                   <ComboBoxItem Name="True">True</ComboBoxItem>
+                    <ComboBoxItem Name="False">False</ComboBoxItem>
+                    </ComboBox>
+                <ComboBox x:Name="cmb_useala" 
+                	DisplayMemberPath="Content"
+                	SelectedItem="{Binding useALA}"
+                    SelectedValuePath="Content"
+                	SelectedValue="{Binding useALA, Mode=OneWay}" Margin="157,427,10,191"  FontFamily="Calibri" FontSize="15" />
+
+
+
+            </Grid>
+
+        </ScrollViewer>
+
+        <Button Grid.Row="1" x:Name="btn_add" Height="68" Width="122" Command="{Binding AddOrder}" CommandParameter="{Binding Project}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" >
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/Image/SaveButton.jpg"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
+
+
     </Grid>
 </Page>
