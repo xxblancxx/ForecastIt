@@ -59,9 +59,14 @@ namespace Forecast.it.ViewModel
         public void EditTask()
         {
             var req = new Requester();
+            StaticTask.title = Title;
+            StaticTask.description = Description;
+            StaticTask.estimate = Estimate;
+            StaticTask.status = Status;
             
-            Model.Task editTask = new Model.Task(Title, Description, Estimate, Status);
-            req.PutRequest(editTask, EndPoints.Tasks, 712, StaticTask.id);
+            
+
+            req.PutRequest(StaticTask, EndPoints.Tasks, 712, StaticTask.id);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

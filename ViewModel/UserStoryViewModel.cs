@@ -22,10 +22,11 @@ using Forecast.it.View;
 
 namespace Forecast.it.ViewModel
 {
-   public class UserStoryViewModel:INotifyPropertyChanged
+    public class UserStoryViewModel : INotifyPropertyChanged
     {
         private static int pid = (App.Current as App).project_id;
         private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
+        
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -80,7 +81,7 @@ namespace Forecast.it.ViewModel
             }
         }
 
-       int _UserStoryId = 0;
+        int _UserStoryId = 0;
         public int id
         {
             get { return _UserStoryId; }
@@ -94,18 +95,19 @@ namespace Forecast.it.ViewModel
         //Command objects
         public ICommand NewOrders { get; private set; }
         public ICommand AddOrder { get; private set; }
-     
+
         public UserStoryViewModel()
         {
-          AddOrder = new RoutedCommand(CreateOrder);
-          UserStory = new UserStory();
+            AddOrder = new RoutedCommand(CreateOrder);
+            UserStory = new UserStory();
+            
         }
 
-        
+
 
         //private async void LoadOrders()
         //{
-           
+
         //     using (var client = new HttpClient())
         //     {
         //         //27578cb2-8b15-417b-9b42-36ca8922f92c
@@ -117,7 +119,7 @@ namespace Forecast.it.ViewModel
         //        //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
         //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         //        HttpResponseMessage response = client.GetAsync("projects/712/userStories/").Result;
-               
+
         //        try
         //        {
         //            response.EnsureSuccessStatusCode();
@@ -137,10 +139,10 @@ namespace Forecast.it.ViewModel
         //    }
         //}
 
-       
+
         async void CreateOrder(object o)
         {
-           
+
 
             using (var client = new HttpClient())
             {
@@ -161,11 +163,11 @@ namespace Forecast.it.ViewModel
                     var contentToPost = new StreamContent(memStream);
                     contentToPost.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                     try
+                    try
                     {
-                        var response = await client.PostAsync("projects/"+pid+"/userStories", contentToPost);
+                        var response = await client.PostAsync("projects/" + pid + "/userStories", contentToPost);
                         response.EnsureSuccessStatusCode();
-                       await new MessageDialog("New UserStory Added Successfully").ShowAsync();
+                        await new MessageDialog("New UserStory Added Successfully").ShowAsync();
                         _singleton.CurrentPageView.Frame.Navigate(typeof(ListOfUserStories));
 
 
@@ -173,15 +175,15 @@ namespace Forecast.it.ViewModel
                     catch (Exception e)
                     {
                         await new MessageDialog(e.Message).ShowAsync();
-                        
+
 
                     }
                 }
             }
-            
-           
+
+
         }
-       
-    
-}
+
+
+    }
 }

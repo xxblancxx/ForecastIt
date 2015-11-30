@@ -20,6 +20,7 @@ namespace Forecast.it.ViewModel
     public class ViewTaskViewModel : INotifyPropertyChanged
     {
         public static int TaskId { get; set; }
+        public static UserStory StaticUserStory { get; set; }
 
         //public RelayArgCommand<int> SelectedTaskArgCommand          
         //{
@@ -33,10 +34,10 @@ namespace Forecast.it.ViewModel
 
         //private bool OnSelectedTask(int id)
         //{
-            
+
         //}
 
-        
+
 
         public void OnSelectionChanged(int obj)
         {
@@ -56,17 +57,20 @@ namespace Forecast.it.ViewModel
 
         public ViewTaskViewModel()
         {
+            StaticUserStory = StaticUserStory;
             GetTasks();
         }
 
         public ObservableCollection<Task> GetTasks()
         {
             List<Task> result = requester.GetRequestAsync<Model.Task>(EndPoints.Tasks, 712).Result;
-            
-            TaskCollection = new ObservableCollection<Model.Task>(result);
-            
+            var sortByID = result.Where(a => a.userStory == StaticUserStory.id).OrderBy(a => a.id);
+            TaskCollection = new ObservableCollection<Model.Task>(sortByID);
+
             return TaskCollection;
         }
+
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 

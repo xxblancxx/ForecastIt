@@ -47,7 +47,7 @@ namespace Forecast.it.Model
            this.status = status;
        }
 
-       public Task(string url, int id, string title, string description, int estimate, int timeLeft, int projectPhase, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
+       public Task(string url, int id, string title, string description, int estimate, int timeLeft, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
        {
            this.url = url;
            this.id = id;
@@ -55,7 +55,7 @@ namespace Forecast.it.Model
            this.description = description;
            this.estimate = estimate;
            this.timeLeft = timeLeft;
-           this.projectPhase = projectPhase;
+         
            this.status = status;
            this.waterfallStatus = waterfallStatus;
            this.owners = owners;
