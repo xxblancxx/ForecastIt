@@ -102,8 +102,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectPhase.cs" />
     <Compile Include="Model\Requester.cs" />
     <Compile Include="Model\ScrumStage.cs" />
+    <Compile Include="Model\Status.cs" />
     <Compile Include="ViewModel\CreateUserViewModel.cs" />
     <Compile Include="ViewModel\EditTaskViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

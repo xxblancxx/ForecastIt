@@ -42,9 +42,16 @@ namespace Forecast.it.ViewModel
         {
             
         }
-        public ObservableCollection<Model.Task> TaskCollection { get; set; }
+
+        public ObservableCollection<Task> TaskCollection
+        {
+            get { return _taskCollection; }
+            set { _taskCollection = value; }
+        }
+
         Requester requester = new Requester();
         private RelayArgCommand<int> _relayArgCommand;
+        private ObservableCollection<Task> _taskCollection;
 
 
         public ViewTaskViewModel()
@@ -52,13 +59,12 @@ namespace Forecast.it.ViewModel
             GetTasks();
         }
 
-        public ObservableCollection<Model.Task> GetTasks()
+        public ObservableCollection<Task> GetTasks()
         {
-            var result = requester.GetRequestAsync<Model.Task>(EndPoints.Tasks, 712);
-            if (result.Result != null)
-            {
-                TaskCollection = new ObservableCollection<Model.Task>(result.Result);
-            }
+            List<Task> result = requester.GetRequestAsync<Model.Task>(EndPoints.Tasks, 712).Result;
+            
+            TaskCollection = new ObservableCollection<Model.Task>(result);
+            
             return TaskCollection;
         }
 

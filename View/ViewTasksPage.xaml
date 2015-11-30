@@ -44,10 +44,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="Title_text" TextWrapping="Wrap" Text="{Binding TaskCollection[0].description}" d:LayoutOverrides="Width, Height">
+                <TextBlock x:Name="Title_text" TextWrapping="Wrap" Text="{Binding TaskCollection}" d:LayoutOverrides="Width, Height">
                 	<Interactivity:Interaction.Behaviors>
                 		<Core:EventTriggerBehavior EventName="PointerPressed">
-                			<Core:InvokeCommandAction Command="{Binding SetTaskIdCommand}"/>
+                			<Core:InvokeCommandAction Command="{Binding }"/>
                 			<Core:NavigateToPageAction TargetPage="Forecast.it.View.EditTaskPage"/>
                 		</Core:EventTriggerBehavior>
                 	</Interactivity:Interaction.Behaviors>
