@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -36,11 +28,9 @@ namespace Forecast.it.View
     {
         private NavigationHelper navigationHelper;
 
-        private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
-
         public ViewProjectDetails()
         {
-
+            
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -52,11 +42,8 @@ namespace Forecast.it.View
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This Parameter is typically used to configure the page.</param>
-
-
-
-
-
+    
+        
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
@@ -64,22 +51,20 @@ namespace Forecast.it.View
             if (prjProject != null)
 
             {
+
                 pname.Text = prjProject.name;
                 pstage.Text = prjProject.projectStatus;
-
-               
-               
                 powner.Text = prjProject.projectOwner.ToString();
                 pmanager.Text = prjProject.projectManager.ToString();
-
                 pplanner.Text = prjProject.projectEstimator.ToString();
+
             }
         }
 
+ 
 
 
-
-        private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
+private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = sender as MenuFlyoutItem;
 
@@ -92,7 +77,7 @@ namespace Forecast.it.View
                     break;
 
                 case "task":
-                    this.Frame.Navigate(typeof (CreateTaskPage));
+                    this.Frame.Navigate(typeof(CreateTaskPage));
                     break;
                 case "project":
                     Frame.Navigate(typeof (CreateProjectPage));
@@ -126,12 +111,10 @@ namespace Forecast.it.View
 
             }
         }
-
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
         }
-
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
         }
@@ -139,20 +122,11 @@ namespace Forecast.it.View
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
         }
-
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
         }
-
         public ObservableDictionary DefaultViewModel { get; } = new ObservableDictionary();
 
-      
-        
-      
-        
-
     }
-
-
 }

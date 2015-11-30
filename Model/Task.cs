@@ -9,7 +9,7 @@ using Forecast.it.Annotations;
 
 namespace Forecast.it.Model
 {
-   public class Task
+   public class Tasked
     {
         public string url { get; set; }
         public int id { get; set; }
@@ -33,12 +33,12 @@ namespace Forecast.it.Model
         public DateTime createdOn { get; set; }
         public int createdBy { get; set; }
 
-       public Task()
+       public Tasked()
        {
            
        }
 
-       public Task(string url, int id, string title, string description, int estimate, int timeLeft, int projectPhase, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
+       public Tasked(string url, int id, string title, string description, int estimate, int timeLeft, int projectPhase, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
        {
            this.url = url;
            this.id = id;

@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayArgCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SingletonCommon.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Model\Requester.cs" />
     <Compile Include="Model\ScrumStage.cs" />
     <Compile Include="ViewModel\CreateUserViewModel.cs" />
+    <Compile Include="ViewModel\EditTaskViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="ViewModel\ScrumStageViewModel.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="ViewModel\UserStoryTypeViewModel.cs" />
     <Compile Include="ViewModel\UserStoryViewModel.cs" />
     <Compile Include="ViewModel\ViewTaskViewModel.cs" />
+    <Compile Include="ViewModel\ViewUserStoryViewModel.cs" />
     <Compile Include="View\AllDevelopersListPage.xaml.cs">
       <DependentUpon>AllDevelopersListPage.xaml</DependentUpon>
     </Compile>
@@ -140,11 +143,14 @@
     <Compile Include="View\CreateUserStoryPage.xaml.cs">
       <DependentUpon>CreateUserStoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditTaskPage.xaml.cs">
+      <DependentUpon>EditTaskPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ListOfDevelopersInProject.xaml.cs">
       <DependentUpon>ListOfDevelopersInProject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ListOfTasksPage.xaml.cs">
-      <DependentUpon>ListOfTasksPage.xaml</DependentUpon>
+    <Compile Include="View\ViewTasksPage.xaml.cs">
+      <DependentUpon>ViewTasksPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ListOfUserStories.xaml.cs">
       <DependentUpon>ListOfUserStories.xaml</DependentUpon>
@@ -217,11 +223,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\EditTaskPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ListOfDevelopersInProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ListOfTasksPage.xaml">
+    <Page Include="View\ViewTasksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
