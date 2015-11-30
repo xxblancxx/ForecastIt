@@ -58,8 +58,15 @@ namespace Forecast.it.Model
         }
 
         public override string ToString()
-       {
-           return $"url: {url}, id: {id}, firstName: {firstName}, lastName: {lastName}, initials: {initials}, email: {email}, dateCreated: {dateCreated}, lastUpdated: {lastUpdated}, isAdmin: {isAdmin}, active: {active}, defaulRrole: {defaultRole}, externalEmployeeId: {externalEmployeeId}, startPage: {startPage}, integrationTimelogId: {integrationTimelogId}";
+        {
+            if (isAdmin)
+            {
+                return string.Format("{0}, {1} {2}, {3}", initials, firstName, lastName, email) + " Is Admin";
+            }
+            else
+            {
+                return string.Format("{0}, {1} {2}, {3}", initials, firstName, lastName, email) + " Not Admin";
+            }
        }
 
        
