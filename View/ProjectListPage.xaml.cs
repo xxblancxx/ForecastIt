@@ -113,11 +113,13 @@ namespace Forecast.it.View
 
 
         #endregion
-        private void MyClick(object sender, ItemClickEventArgs e)
+     
+        private void ItemClick(object sender, ItemClickEventArgs e)
         {
-            
-            Frame.Navigate(typeof (ViewProjectDetails),e.ClickedItem);
+            // Implemented this on last day to make it work.
+            // By Martin.
+            // in it's entirety, it should be MVVM, not Code Behind, but only stitching debug.
+            Frame.Navigate(typeof(ViewProjectDetails), e.ClickedItem);
         }
-
     }
 }

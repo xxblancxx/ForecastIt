@@ -26,7 +26,7 @@ namespace Forecast.it.Model
         private static SingletonCommon _singleton = SingletonCommon.SingletonInstance;
         private static Requester _instance;
 
-       
+
 
         public Requester()
         {
@@ -175,7 +175,7 @@ namespace Forecast.it.Model
         /// <param name="id1">this is the first Id, it can be left as a zero but for some Calls cant be left </param>
         /// <param name="id2">this is the second Id, for specific subjects</param>
         /// <returns>returns T that is sent to the API for debugging reasons</returns>
-        public async Task<T> PostRequest<T>(T classToPost, EndPoints theUri, int id1 = 0, int id2 = 0)
+        public async Task<bool> PostRequest<T>(T classToPost, EndPoints theUri, int id1 = 0, int id2 = 0)
         {
             using (var handler = new HttpClientHandler())
             {
@@ -186,25 +186,23 @@ namespace Forecast.it.Model
                     client.DefaultRequestHeaders.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    try
+
+                    string serializeObjectToJson = await System.Threading.Tasks.Task.Run(() => JsonConvert.SerializeObject(classToPost));
+
+                    var ext = UriCorrector(theUri, id1, id2);
+
+
+                    var response = await client.PostAsync(ext, new StringContent(serializeObjectToJson, Encoding.UTF8, "application/json"));
+                    if (response.IsSuccessStatusCode)
                     {
-                        string serializeObjectToJson = await System.Threading.Tasks.Task.Run(() => JsonConvert.SerializeObject(classToPost));
-
-                        var ext = UriCorrector(theUri, id1, id2);
-
-
-                        var response = await client.PostAsync(ext, new StringContent(serializeObjectToJson, Encoding.UTF8, "application/json"));
-                        if (response.IsSuccessStatusCode)
-                        {
-                            //await new MessageDialog("Succesfully Created:\n\t"+classToPost).ShowAsync();
-                        }
+                        return true;
+                        //await new MessageDialog("Succesfully Created:\n\t"+classToPost).ShowAsync();
                     }
-                    catch (HttpRequestException exception)
+                    else if (!response.IsSuccessStatusCode)
                     {
-                        //await new MessageDialog(exception.Message).ShowAsync();
+                        return false;
                     }
-
-                    return classToPost;
+                    return true;
                 }
             }
         }

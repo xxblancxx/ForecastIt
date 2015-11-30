@@ -55,7 +55,7 @@
                 ItemsSource="{Binding Projects}"
  
    ItemTemplate="{StaticResource orderTemplate}" Margin="10,0,10,10" 
-                  IsItemClickEnabled="True"
+                  IsItemClickEnabled="True" ItemClick="ItemClick"
               >
             <Grid>
                 <Interactivity:Interaction.Behaviors>
