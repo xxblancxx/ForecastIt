@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Forecast.it.Annotations;
 using Forecast.it.Common;
 using Forecast.it.Model;
@@ -34,35 +37,53 @@ namespace Forecast.it.ViewModel
             private set { }
         }
 
-        public void CreateUserInAPI()
+        public async void CreateUserInAPI()
         {
-            var req = new Requester();
-
-            string initials = "";
-            var splitFirstName = FirstName.Split(' ');
-            var splitLastName = LastName.Split(' ');
-            foreach (var word in splitFirstName)
+            if (FirstName != null && LastName != null && Email != null)
             {
-                initials += word[0];
-            }
-            foreach (var word in splitLastName)
-            {
-                initials += word[0];
-            }
-           initials = initials.ToUpper();
+                var req = new Requester();
 
-            User newUser = new User(FirstName, LastName, initials, Email, false, "Dashboard", 1368);
-            req.PostRequest(newUser, EndPoints.Users);
+                string initials = "";
+                var splitFirstName = FirstName.Split(' ');
+                var splitLastName = LastName.Split(' ');
+                foreach (var word in splitFirstName)
+                {
+                    initials += word[0];
+                }
+                foreach (var word in splitLastName)
+                {
+                    initials += word[0];
+                }
+                initials = initials.ToUpper();
+                User newUser = new User(FirstName, LastName, initials, Email, false, "Dashboard", 1368);
+
+                var status = req.PostRequest(newUser, EndPoints.Users);
+                if (await status)
+                {
+                    SingletonCommon.SingletonInstance.CurrentPageView.Frame.Navigate(typeof(MainPage));
+                }
+                else
+                {
+                    new MessageDialog("To create new user, first return and log in with Admin user.").ShowAsync();
+                }
+
+
+            }
+            else
+            {
+                var msg = new MessageDialog("Fill out all fields");
+                msg.ShowAsync();
+            }
+
         }
-
-        #region Inotify implementation
+      #region Inotify implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        } 
+        }
         #endregion
     }
 }

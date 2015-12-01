@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Forecast.it.Model
 {
    public class User
+<<<<<<< HEAD
     {
         public string url { get; set; }
         public int id { get; set; }
@@ -58,17 +59,29 @@ namespace Forecast.it.Model
         }
 
         public override string ToString()
-        {
-            if (isAdmin)
-            {
-                return string.Format("{0}, {1} {2}, {3}", initials, firstName, lastName, email) + " Is Admin";
-            }
-            else
-            {
-                return string.Format("{0}, {1} {2}, {3}", initials, firstName, lastName, email) + " Not Admin";
-            }
+       {
+           return $"url: {url}, id: {id}, firstName: {firstName}, lastName: {lastName}, initials: {initials}, email: {email}, dateCreated: {dateCreated}, lastUpdated: {lastUpdated}, isAdmin: {isAdmin}, active: {active}, defaulRrole: {defaultRole}, externalEmployeeId: {externalEmployeeId}, startPage: {startPage}, integrationTimelogId: {integrationTimelogId}";
        }
 
+=======
+    {
+
+
+      
+        public int id { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string initials { get; set; }
+        public string email { get; set; }
+        public DateTime dateCreated { get; set; }
+        public DateTime lastUpdated { get; set; }
+        public bool isAdmin { get; set; }
+        public bool active { get; set; }
+        public int defaultRole { get; set; }
+        public int externalEmployeeId { get; set; }
+
+
+>>>>>>> forecast/Tean4
        
     }
 }

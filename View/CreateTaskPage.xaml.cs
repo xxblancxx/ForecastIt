@@ -1,4 +1,5 @@
 ﻿using Forecast.it.Common;
+using Forecast.it.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,6 +32,8 @@ namespace Forecast.it.View
         public CreateTaskPage()
         {
             this.InitializeComponent();
+            var cmbtype = new UserStoryViewModel();
+            ComboBoxUserStories.ItemsSource = cmbtype.UserStorys;
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;

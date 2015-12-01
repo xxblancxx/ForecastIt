@@ -147,7 +147,6 @@ namespace Forecast.it.ViewModel
                     msg.ShowAsync();
 
                 }
-                //Todo Exception handling
             }
         }
 
