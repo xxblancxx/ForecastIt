@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Popups;
+using Forecast.it.Common;
 using Forecast.it.Infrastructure;
 using Forecast.it.Model;
 using Newtonsoft.Json;
@@ -18,20 +19,23 @@ namespace Forecast.it.ViewModel
     {
         
          private static int pid = (App.Current as App).project_id;
-            public TaskViewModel()
+        private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
+        public TaskViewModel()
             {
 
                 AddTask = new RoutedCommand(CreateTasked);
+                
 
-            }
+        }
 
             private void CreateTasked(object obj)
             {
-                Task = new Model.Task();
+                var cmbtype = new UserStoryViewModel();
+               Task = new Model.Task();
                 Task.title = Title;
                 Task.estimate = estimate;
                 Task.status = status;
-                Task.userStory = userStory;
+                Task.userStory =id ;
                 Task.projectPhase = projectPhase;
                 //Tasked task = new Tasked();
                 //task.projectPhase = 1;
@@ -44,9 +48,18 @@ namespace Forecast.it.ViewModel
 
             }
             public event PropertyChangedEventHandler PropertyChanged;
+        private static int _UserStoryId ;
+        public static int id
+        {
+            get { return _UserStoryId; }
+            set
+            {
+                _UserStoryId = value;
+               
+            }
+        }
 
-
-            private void OnPropertyChanged(string pName)
+        private void OnPropertyChanged(string pName)
             {
                 if (PropertyChanged != null)
                 {
@@ -68,14 +81,14 @@ namespace Forecast.it.ViewModel
                 }
             }
 
-            private int _status;
-            public int status
+            private static int _status;
+            public static  int status
             {
                 get { return _status; }
                 set
                 {
                     _status = value;
-                    OnPropertyChanged("status");
+                    
                 }
             }
 
@@ -90,15 +103,15 @@ namespace Forecast.it.ViewModel
                 }
             }
 
-            private int _projectPhase;
+            private static int _projectPhase;
 
-            public int projectPhase
+            public static  int projectPhase
             {
                 get { return _projectPhase; }
                 set
                 {
                     _projectPhase = value;
-                    OnPropertyChanged("projectPhase");
+                   
                 }
             }
 
@@ -133,7 +146,7 @@ namespace Forecast.it.ViewModel
                 {
                     client.BaseAddress = new Uri("https://api.forecast.it/api/v1/");
 
-                    var byteArray = Encoding.UTF8.GetBytes((App.Current as App).username + ":" + (App.Current as App).password);
+                    var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
                     //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
@@ -157,7 +170,7 @@ namespace Forecast.it.ViewModel
 
                     try
                     {
-                        var response = await client.PostAsync("projects/"+pid+"/tasks", contentToPost);
+                        var response = await client.PostAsync("projects/712/tasks", contentToPost);
                         response.EnsureSuccessStatusCode();
                         await new MessageDialog("New Task Added Successfully").ShowAsync();
 

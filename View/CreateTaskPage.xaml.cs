@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Forecast.it.Model;
+using Forecast.it.ViewModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -31,6 +33,9 @@ namespace Forecast.it.View
         public CreateTaskPage()
         {
             this.InitializeComponent();
+            var cmbtype = new UserStoryViewModel();
+            comboBoxUserstory.ItemsSource = cmbtype.UserStorys;
+
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -107,5 +112,122 @@ namespace Forecast.it.View
         }
 
         #endregion
+
+        private void comboBoxUserstory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxUserstory.SelectedItem != null)
+            {
+
+                //var cmbtype = new UserStoryViewModel();
+                var cmbtask=new TaskViewModel();
+                var obj = comboBoxUserstory.SelectedValue;
+                TaskViewModel.id=Convert.ToInt32(obj);
+            }
+        }
+
+        private void statusBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (statusBox.SelectedIndex == 0)
+            {
+                TaskViewModel.status = 1116;
+            }
+            else if (statusBox.SelectedIndex == 1)
+            {
+                TaskViewModel.status = 1117;
+            }
+            else if (statusBox.SelectedIndex == 2)
+            {
+                TaskViewModel.status = 1118;
+
+            }
+            else if (statusBox.SelectedIndex == 3)
+            {
+                TaskViewModel.status = 1119;
+
+            }
+        }
+
+        private void ProjectPhaseBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ProjectPhaseBox.SelectedIndex == 0)
+            {
+                TaskViewModel.projectPhase = 3674;
+            }
+            else if (ProjectPhaseBox.SelectedIndex == 1)
+            {
+                TaskViewModel.projectPhase = 3677;
+            }
+            else if (ProjectPhaseBox.SelectedIndex == 2)
+            {
+                TaskViewModel.projectPhase = 3673;
+
+            }
+            else if (ProjectPhaseBox.SelectedIndex == 3)
+            {
+                TaskViewModel.projectPhase =3675;
+
+            }
+            else if (ProjectPhaseBox.SelectedIndex == 4)
+            {
+                TaskViewModel.projectPhase = 3676;
+
+            }
+        }
+
+        private void OnFlyoutSetingButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem settingitem = sender as MenuFlyoutItem;
+
+            switch (settingitem.Name)
+            {
+                case "projectsetting":
+                    //
+                    break;
+
+                case "administration":
+                    break;
+                case "usersetting":
+                    //
+                    break;
+                case "support":
+                    break;
+                case "aboutforecast":
+                    break;
+                case "logout":
+                    Frame.Navigate(typeof(MainPage));
+                    break;
+
+
+            }
+        }
+
+        private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = sender as MenuFlyoutItem;
+
+            switch (item.Name)
+            {
+                case "userstory":
+                    this.Frame.Navigate(typeof(ChooseProjectPage));
+
+                    //
+                    break;
+
+                case "task":
+                    this.Frame.Navigate(typeof(CreateTaskPage));
+                    break;
+                case "project":
+                    Frame.Navigate(typeof(CreateProjectPage));
+                    //
+                    break;
+            }
+        }
+
+        private void USCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ViewProjectDetails));
+        }
+
+      
     }
 }
