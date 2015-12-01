@@ -25,11 +25,11 @@ namespace Forecast.it.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    
+
     public sealed partial class ListOfUserStories : Page
     {
         UserStory userStory = new UserStory();
-        public object obj;
+        public static object obj;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -103,11 +103,14 @@ namespace Forecast.it.View
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+
             this.navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            
+
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
@@ -119,9 +122,10 @@ namespace Forecast.it.View
             {
                 obj = UserStoryListView.SelectedValue;
                 userStory = obj as UserStory;
-                ViewTaskViewModel.StaticUserStory = userStory;
-                this.Frame.Navigate(typeof(ListOfTasksPage));
+                ViewTaskViewModel._staticUserStory = userStory;
+
             }
+            this.Frame.Navigate(typeof(ListOfTasksPage));
         }
     }
 }

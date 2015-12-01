@@ -20,23 +20,15 @@ namespace Forecast.it.ViewModel
     public class ViewTaskViewModel : INotifyPropertyChanged
     {
         public static int TaskId { get; set; }
-        public static UserStory StaticUserStory { get; set; }
 
-        //public RelayArgCommand<int> SelectedTaskArgCommand          
-        //{
-        //    get { return _relayArgCommand ?? (_relayArgCommand = new RelayArgCommand<int>(OnSelectionChanged,OnSelectedTask)); }
-        //    set
-        //    {
+        
 
-        //        _relayArgCommand = value;
-        //    }
-        //}
+        private static UserStory StaticUserStory
+        {
 
-        //private bool OnSelectedTask(int id)
-        //{
-
-        //}
-
+            get { return _staticUserStory; }
+            set { _staticUserStory = value; }
+        }
 
 
         public void OnSelectionChanged(int obj)
@@ -53,6 +45,7 @@ namespace Forecast.it.ViewModel
         Requester requester = new Requester();
         private RelayArgCommand<int> _relayArgCommand;
         private ObservableCollection<Task> _taskCollection;
+        public static UserStory _staticUserStory;
 
 
         public ViewTaskViewModel()
