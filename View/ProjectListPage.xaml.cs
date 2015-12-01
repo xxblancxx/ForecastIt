@@ -119,7 +119,7 @@ namespace Forecast.it.View
             // Implemented this on last day to make it work.
             // By Martin.
             // in it's entirety, it should be MVVM, not Code Behind, but only stitching debug.
-            Frame.Navigate(typeof(ViewProjectDetails), e.ClickedItem);
+            Frame.Navigate(typeof(ListOfUserStories), e.ClickedItem);
         }
     }
 }
