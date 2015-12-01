@@ -25,6 +25,7 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class ChooseProjectPage : Page
     {
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         int id;
