@@ -99,45 +99,47 @@ namespace Forecast.it.ViewModel
         {
           AddOrder = new RoutedCommand(CreateOrder);
           UserStory = new UserStory();
+
+          LoadOrders();
         }
 
-        
 
-        //private async void LoadOrders()
-        //{
-           
-        //     using (var client = new HttpClient())
-        //     {
-        //         //27578cb2-8b15-417b-9b42-36ca8922f92c
-        //        client.BaseAddress = new Uri((App.Current as App).BaseAddress);
 
-        //        var byteArray = Encoding.UTF8.GetBytes("silverlightjashmin@gmail.com:jashmin86527");
-        //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+        private async void LoadOrders()
+        {
 
-        //        //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        HttpResponseMessage response = client.GetAsync("projects/712/userStories/").Result;
-               
-        //        try
-        //        {
-        //            response.EnsureSuccessStatusCode();
-        //            using (var responseStream = await response.Content.ReadAsStreamAsync())
-        //            {
-        //                var ordersList = new DataContractJsonSerializer(typeof(List<UserStory>));
-        //                UserStorys = new ObservableCollection<UserStory>((IEnumerable<UserStory>)ordersList.ReadObject(responseStream));
-        //            }
-        //        }
-        //        catch (HttpRequestException)
-        //        {
-        //            var msg =
-        //                new MessageDialog("Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase);
-        //            msg.ShowAsync();
+            using (var client = new HttpClient())
+            {
+                //27578cb2-8b15-417b-9b42-36ca8922f92c
+                client.BaseAddress = new Uri((App.Current as App).BaseAddress);
 
-        //        }
-        //    }
-        //}
+                var byteArray = Encoding.UTF8.GetBytes("silverlightjashmin@gmail.com:jashmin86527");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-       
+                //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.GetAsync("projects/712/userStories/").Result;
+
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    {
+                        var ordersList = new DataContractJsonSerializer(typeof(List<UserStory>));
+                        UserStorys = new ObservableCollection<UserStory>((IEnumerable<UserStory>)ordersList.ReadObject(responseStream));
+                    }
+                }
+                catch (HttpRequestException)
+                {
+                    var msg =
+                        new MessageDialog("Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase);
+                    msg.ShowAsync();
+
+                }
+            }
+        }
+
+
         async void CreateOrder(object o)
         {
            
