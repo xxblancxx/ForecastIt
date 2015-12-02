@@ -25,6 +25,7 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class ChooseProjectPage : Page
     {
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         int id;
@@ -114,7 +115,7 @@ namespace Forecast.it.View
             if (CmbProject.SelectedItem != null)
                 id = Convert.ToInt32(CmbProject.SelectedValue);
             (App.Current as App).project_id = id;
-            this.Frame.Navigate(typeof (CreateUserStoryPage));
+            this.Frame.Navigate(typeof (ListOfUserStories));
         }
 
         private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)

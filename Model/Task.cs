@@ -18,11 +18,12 @@ namespace Forecast.it.Model
         public int estimate { get; set; }
         public int timeLeft { get; set; }
         public int projectPhase { get; set; }
+      
         public int status { get; set; }
         public object waterfallStatus { get; set; }
         public IList<int> owners { get; set; }
         public int userStory { get; set; }
-        public DateTime deadline { get; set; }
+        public object deadline { get; set; }
         public IList<int> tags { get; set; }
         public bool integrationTimelogTask { get; set; }
         public object integrationTfsId { get; set; }
@@ -38,7 +39,15 @@ namespace Forecast.it.Model
            
        }
 
-       public Task(string url, int id, string title, string description, int estimate, int timeLeft, int projectPhase, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
+       public Task(string title, string description, int estimate, int status)
+       {
+           this.title = title;
+           this.description = description;
+           this.estimate = estimate;
+           this.status = status;
+       }
+
+       public Task(string url, int id, string title, string description, int estimate, int timeLeft, int status, object waterfallStatus, IList<int> owners, int userStory, DateTime deadline, IList<int> tags, bool integrationTimelogTask, object integrationTfsId, object integrationTimelogId, object integrationTimelogGuid, DateTime modifiedOn, int modifiedBy, DateTime createdOn, int createdBy)
        {
            this.url = url;
            this.id = id;
@@ -46,7 +55,7 @@ namespace Forecast.it.Model
            this.description = description;
            this.estimate = estimate;
            this.timeLeft = timeLeft;
-           this.projectPhase = projectPhase;
+         
            this.status = status;
            this.waterfallStatus = waterfallStatus;
            this.owners = owners;

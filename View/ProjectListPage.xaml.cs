@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Forecast.it.Model;
 using Forecast.it.ViewModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -27,6 +28,8 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class ProjectListPage : Page
     {
+        Project project = new Project();
+        public static object obj;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -116,10 +119,23 @@ namespace Forecast.it.View
      
         private void ItemClick(object sender, ItemClickEventArgs e)
         {
+            
+            //if (projectslist .SelectedItem != null)
+            //{
+            //    obj = UserStoryListView.SelectedValue;
+            //    userStory = obj as UserStory;
+            //    ViewTaskViewModel._staticUserStory = userStory;
+
+            //}
+            this.Frame.Navigate(typeof(ListOfTasksPage));
             // Implemented this on last day to make it work.
             // By Martin.
             // in it's entirety, it should be MVVM, not Code Behind, but only stitching debug.
-            Frame.Navigate(typeof(ViewProjectDetails), e.ClickedItem);
+            Frame.Navigate(typeof(ListOfUserStories), e.ClickedItem);
+        }
+
+        private void ProjectName_SelectionChanged(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

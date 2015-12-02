@@ -21,43 +21,49 @@ namespace Forecast.it.ViewModel
     {
         public static int TaskId { get; set; }
 
-        //public RelayArgCommand<int> SelectedTaskArgCommand          
-        //{
-        //    get { return _relayArgCommand ?? (_relayArgCommand = new RelayArgCommand<int>(OnSelectionChanged,OnSelectedTask)); }
-        //    set
-        //    {
-
-        //        _relayArgCommand = value;
-        //    }
-        //}
-
-        //private bool OnSelectedTask(int id)
-        //{
-            
-        //}
-
         
+
+        private static UserStory StaticUserStory
+        {
+
+            get { return _staticUserStory; }
+            set { _staticUserStory = value; }
+        }
+
 
         public void OnSelectionChanged(int obj)
         {
             
         }
-        public ObservableCollection<Model.Task> TaskCollection { get; set; }
+
+        public ObservableCollection<Task> TaskCollection
+        {
+            get { return _taskCollection; }
+            set { _taskCollection = value; }
+        }
+
         Requester requester = new Requester();
         private RelayArgCommand<int> _relayArgCommand;
+        private ObservableCollection<Task> _taskCollection;
+        public static UserStory _staticUserStory;
 
 
         public ViewTaskViewModel()
         {
+            StaticUserStory = StaticUserStory;
             GetTasks();
         }
 
-        public ObservableCollection<Model.Task> GetTasks()
+        public ObservableCollection<Task> GetTasks()
         {
-            var result = requester.GetRequestAsync<Model.Task>(EndPoints.Users);
-            TaskCollection = new ObservableCollection<Model.Task>(result.Result);
+            List<Task> result = requester.GetRequestAsync<Model.Task>(EndPoints.Tasks, 712).Result;
+            var sortByID = result.Where(a => a.userStory == StaticUserStory.id).OrderBy(a => a.id);
+            TaskCollection = new ObservableCollection<Model.Task>(sortByID);
+
             return TaskCollection;
         }
+
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
