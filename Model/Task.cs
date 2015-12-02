@@ -75,7 +75,14 @@ namespace Forecast.it.Model
 
        public override string ToString()
        {
-           return $"url: {url}, id: {id}, title: {title}, description: {description}, estimate: {estimate}, timeLeft: {timeLeft}, projectPhase: {projectPhase}, status: {status}, waterfallStatus: {waterfallStatus}, owners: {owners}, userStory: {userStory}, deadline: {deadline}, tags: {tags}, integrationTimelogTask: {integrationTimelogTask}, integrationTfsId: {integrationTfsId}, integrationTimelogId: {integrationTimelogId}, integrationTimelogGuid: {integrationTimelogGuid}, modifiedOn: {modifiedOn}, modifiedBy: {modifiedBy}, createdOn: {createdOn}, createdBy: {createdBy}";
+            //return $"url: {url}, id: {id}, title: {title}, description: {description}, estimate: {estimate}," +
+            //       $" timeLeft: {timeLeft}, projectPhase: {projectPhase}, status: {status}, waterfallStatus: {waterfallStatus}, " +
+            //       $"owners: {owners}, userStory: {userStory}, deadline: {deadline}, tags: {tags}, integrationTimelogTask: {integrationTimelogTask}," +
+            //       $" integrationTfsId: {integrationTfsId}, integrationTimelogId: {integrationTimelogId}, integrationTimelogGuid: {integrationTimelogGuid}," +
+            //       $" modifiedOn: {modifiedOn}, modifiedBy: {modifiedBy}, createdOn: {createdOn}, createdBy: {createdBy}";
+
+            return string.Format("{0}: {1}, {2} created by {3} ", title, description, status, createdBy);
+            // simple ToString by Martin for Demo.
        }
 
       

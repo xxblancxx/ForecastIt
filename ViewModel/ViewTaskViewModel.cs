@@ -26,7 +26,15 @@ namespace Forecast.it.ViewModel
         private static UserStory StaticUserStory
         {
 
-            get { return _staticUserStory; }
+            get
+            {
+                if (_staticUserStory != null)
+                {
+                     return _staticUserStory;
+                }
+               _staticUserStory = new UserStory();
+                return _staticUserStory;
+            }
             set { _staticUserStory = value; }
         }
 

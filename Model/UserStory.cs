@@ -32,8 +32,12 @@ namespace Forecast.it.Model
      
        public List<int> owners { get; set; }
        public List<int> tags { get; set; }
-       
-       
-       
+
+
+       public override string ToString()
+       {
+           return string.Format("{0}, {1}, Status: {3}", title, description, status);
+            // Tostring by Martin for Demo.
+       }
     }
 }
