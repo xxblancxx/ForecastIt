@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -92,16 +92,23 @@
     </Compile>
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayArgCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SingletonCommon.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="HelperClasses\EndPointConverter.cs" />
+    <Compile Include="HelperClasses\EndPoints.cs" />
     <Compile Include="Infrastructure\RouteCommand.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectPhase.cs" />
     <Compile Include="Model\Requester.cs" />
     <Compile Include="Model\ScrumStage.cs" />
+    <Compile Include="Model\Status.cs" />
+    <Compile Include="ViewModel\CreateUserViewModel.cs" />
+    <Compile Include="ViewModel\EditTaskViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="ViewModel\ScrumStageViewModel.cs" />
@@ -116,9 +123,11 @@
     <Compile Include="ViewModel\SeeDevelopersViewModel.cs" />
     <Compile Include="ViewModel\SprintViewModel.cs" />
     <Compile Include="ViewModel\TagViewModel.cs" />
+    <Compile Include="ViewModel\TaskViewModel.cs" />
     <Compile Include="ViewModel\UserStoryTypeViewModel.cs" />
     <Compile Include="ViewModel\UserStoryViewModel.cs" />
     <Compile Include="ViewModel\ViewTaskViewModel.cs" />
+    <Compile Include="ViewModel\ViewUserStoryViewModel.cs" />
     <Compile Include="View\AllDevelopersListPage.xaml.cs">
       <DependentUpon>AllDevelopersListPage.xaml</DependentUpon>
     </Compile>
@@ -137,11 +146,14 @@
     <Compile Include="View\CreateUserStoryPage.xaml.cs">
       <DependentUpon>CreateUserStoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditTaskPage.xaml.cs">
+      <DependentUpon>EditTaskPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ListOfDevelopersInProject.xaml.cs">
       <DependentUpon>ListOfDevelopersInProject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ListOfTasksPage.xaml.cs">
-      <DependentUpon>ListOfTasksPage.xaml</DependentUpon>
+    <Compile Include="View\ViewTasksPage.xaml.cs">
+      <DependentUpon>ViewTasksPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ListOfUserStories.xaml.cs">
       <DependentUpon>ListOfUserStories.xaml</DependentUpon>
@@ -214,11 +226,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\EditTaskPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ListOfDevelopersInProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ListOfTasksPage.xaml">
+    <Page Include="View\ViewTasksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -377,28 +393,41 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SingletonCommon.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="HelperClasses\EndPointConverter.cs" />
+    <Compile Include="HelperClasses\EndPoints.cs" />
     <Compile Include="Infrastructure\RouteCommand.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BusinessUnit.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectType.cs" />
     <Compile Include="Model\Requester.cs" />
     <Compile Include="Model\ScrumStage.cs" />
+    <Compile Include="ViewModel\BusinessUnitViewModel.cs" />
+    <Compile Include="ViewModel\CreateUserViewModel.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ProjectTypeViewModel.cs" />
     <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="ViewModel\ScrumStageViewModel.cs" />
     <Compile Include="Model\Sprint.cs" />
     <Compile Include="Model\Tag.cs" />
-    <Compile Include="Model\Tasked.cs" />
+    <Compile Include="Model\Task.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserStory.cs" />
     <Compile Include="Model\UserStoryType.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\SeeDevelopersViewModel.cs" />
     <Compile Include="ViewModel\SprintViewModel.cs" />
     <Compile Include="ViewModel\TagViewModel.cs" />
+    <Compile Include="ViewModel\TaskViewModel.cs" />
     <Compile Include="ViewModel\UserStoryTypeViewModel.cs" />
     <Compile Include="ViewModel\UserStoryViewModel.cs" />
+    <Compile Include="ViewModel\ViewTaskViewModel.cs" />
+    <Compile Include="ViewModel\ViewUserStoryViewModel.cs" />
     <Compile Include="View\AllDevelopersListPage.xaml.cs">
       <DependentUpon>AllDevelopersListPage.xaml</DependentUpon>
     </Compile>
@@ -560,7 +589,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
->>>>>>> 4babf1b78209146d24b6f06a9b2847080a9404eb
+>>>>>>> f6e57ab1d1f9ad2ceb04acbe51e6372f8aab43f1
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
