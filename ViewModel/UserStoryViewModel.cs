@@ -101,7 +101,7 @@ namespace Forecast.it.ViewModel
 
         public UserStoryViewModel()
         {
-            //AddOrder = new RoutedCommand(CreateOrder);
+            AddOrder = new RoutedCommand(CreateOrder);
             GetUserStories();
 
           LoadOrders();
@@ -118,7 +118,7 @@ namespace Forecast.it.ViewModel
                 //27578cb2-8b15-417b-9b42-36ca8922f92c
                 client.BaseAddress = new Uri((App.Current as App).BaseAddress);
 
-                var byteArray = Encoding.UTF8.GetBytes("silverlightjashmin@gmail.com:jashmin86527");
+                var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
                 //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
@@ -145,49 +145,49 @@ namespace Forecast.it.ViewModel
         }
 
 
-        //async void CreateOrder(object o)
-        //{
+        async void CreateOrder(object o)
+        {
 
 
-        //    using (var client = new HttpClient())
-        //    {
+            using (var client = new HttpClient())
+            {
 
-        //        client.BaseAddress = new Uri((App.Current as App).BaseAddress);
+                client.BaseAddress = new Uri((App.Current as App).BaseAddress);
 
-        //        var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
-        //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+                var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-        //        //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-        //        using (var memStream = new MemoryStream())
-        //        {
-        //            var data = new DataContractJsonSerializer(typeof(UserStory));
-        //            data.WriteObject(memStream, UserStory);
-        //            memStream.Position = 0;
-        //            var contentToPost = new StreamContent(memStream);
-        //            contentToPost.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                using (var memStream = new MemoryStream())
+                {
+                    var data = new DataContractJsonSerializer(typeof(UserStory));
+                    data.WriteObject(memStream, UserStory);
+                    memStream.Position = 0;
+                    var contentToPost = new StreamContent(memStream);
+                    contentToPost.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-        //            try
-        //            {
-        //                var response = await client.PostAsync("projects/" + pid + "/userStories", contentToPost);
-        //                response.EnsureSuccessStatusCode();
-        //                await new MessageDialog("New UserStory Added Successfully").ShowAsync();
-        //                _singleton.CurrentPageView.Frame.Navigate(typeof(ListOfUserStories));
-
-
-        //            }
-        //            catch (Exception e)
-        //            {
-        //                await new MessageDialog(e.Message).ShowAsync();
+                    try
+                    {
+                        var response = await client.PostAsync("projects/" + pid + "/userStories", contentToPost);
+                        response.EnsureSuccessStatusCode();
+                        await new MessageDialog("New UserStory Added Successfully").ShowAsync();
+                        _singleton.CurrentPageView.Frame.Navigate(typeof(ListOfUserStories));
 
 
-        //            }
-        //        }
-        //    }
+                    }
+                    catch (Exception e)
+                    {
+                        await new MessageDialog(e.Message).ShowAsync();
 
 
-        //} 
+                    }
+                }
+            }
+
+
+        }
         #endregion
 
         public ObservableCollection<UserStory> GetUserStories()
