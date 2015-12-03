@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Forecast.it.Model;
+using Forecast.it.ViewModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,12 +27,55 @@ namespace Forecast.it.View
     /// </summary>
     public sealed partial class CreateProjectPage : Page
     {
+        public event EventHandler DropDownOpened;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         public CreateProjectPage()
         {
             this.InitializeComponent();
+            var cmbtype = new ProjectTypeViewModel();
+            cmb_prjtype.ItemsSource = cmbtype.ProjectTypes;
+
+            var cmbbu = new BusinessUnitViewModel();
+            cmb_bu.ItemsSource = cmbbu.BusinessUnits;
+
+            var cmbcust= new CustomerViewModel();
+            cmb_customer.ItemsSource = cmbcust.Customers;
+
+            if (cmb_status.Items != null)
+            {
+                cmb_status.Items.Add(new ComboBoxItem() {Content = "Estimating", IsSelected = true});
+                cmb_status.Items.Add(new ComboBoxItem() {Content = "In Progress"});
+                cmb_status.Items.Add(new ComboBoxItem() {Content = "Completed"});
+                cmb_status.Items.Add(new ComboBoxItem() {Content = "Halted"});
+                cmb_status.Items.Add(new ComboBoxItem() {Content = "Cancelled"});
+
+            }
+
+            if (cmb_usecost.Items != null)
+            {
+                cmb_usecost.Items.Add(new ComboBoxItem() { Content = "Internal",IsSelected = true});
+                cmb_usecost.Items.Add(new ComboBoxItem() { Content = "External" });
+              
+            }
+
+            if (cmb_useala.Items != null)
+            {
+                cmb_useala.Items.Add(new ComboBoxItem() { Content = "True ",IsSelected = true});
+                cmb_useala.Items.Add(new ComboBoxItem() { Content = "False" });
+
+            }
+
+
+            //dummy data for user
+
+            if (cmb_owner.Items != null)
+            {
+                cmb_owner.Items.Add(new ComboBoxItem() { Content = 637 });
+                cmb_owner.Items.Add(new ComboBoxItem() { Content = 617 });
+
+            }
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -105,7 +150,65 @@ namespace Forecast.it.View
         {
             this.navigationHelper.OnNavigatedFrom(e);
         }
+        private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = sender as MenuFlyoutItem;
 
+            switch (item.Name)
+            {
+                case "userstory":
+                    this.Frame.Navigate(typeof(ChooseProjectPage));
+
+                    //
+                    break;
+
+                case "task":
+                    this.Frame.Navigate(typeof(CreateTaskPage));
+                    break;
+                case "project":
+                    Frame.Navigate(typeof(CreateProjectPage));
+                    //
+                    break;
+            }
+        }
+        private void OnFlyoutSetingButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem settingitem = sender as MenuFlyoutItem;
+
+            switch (settingitem.Name)
+            {
+                case "projectsetting":
+                    //
+                    break;
+
+                case "administration":
+                    break;
+                case "usersetting":
+                    //
+                    break;
+                case "support":
+                    break;
+                case "aboutforecast":
+                    break;
+                case "logout":
+                    break;
+
+
+            }
+        }
         #endregion
+
+        void OnDropDownOpened(object sender, object o)
+        {
+            cmb_prjtype.IsEnabled = false;
+            cmb_bu.IsEnabled = false;
+            cmb_customer.IsEnabled = false;
+        }
+        void OnDropDownClosed(object sender, object o)
+        {
+            cmb_prjtype.IsEnabled = true;
+            cmb_bu.IsEnabled = true;
+            cmb_customer.IsEnabled = true;
+        }
     }
 }

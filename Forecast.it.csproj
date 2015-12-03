@@ -91,7 +91,6 @@
     </Compile>
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
-    <Compile Include="Common\RelayArgCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SingletonCommon.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
@@ -101,14 +100,17 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BusinessUnit.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Project.cs" />
-    <Compile Include="Model\ProjectPhase.cs" />
+    <Compile Include="Model\ProjectType.cs" />
     <Compile Include="Model\Requester.cs" />
     <Compile Include="Model\ScrumStage.cs" />
-    <Compile Include="Model\Status.cs" />
+    <Compile Include="ViewModel\BusinessUnitViewModel.cs" />
     <Compile Include="ViewModel\CreateUserViewModel.cs" />
-    <Compile Include="ViewModel\EditTaskViewModel.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ProjectTypeViewModel.cs" />
     <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="ViewModel\ScrumStageViewModel.cs" />
     <Compile Include="Model\Sprint.cs" />
@@ -145,14 +147,11 @@
     <Compile Include="View\CreateUserStoryPage.xaml.cs">
       <DependentUpon>CreateUserStoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditTaskPage.xaml.cs">
-      <DependentUpon>EditTaskPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ListOfDevelopersInProject.xaml.cs">
       <DependentUpon>ListOfDevelopersInProject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewTasksPage.xaml.cs">
-      <DependentUpon>ViewTasksPage.xaml</DependentUpon>
+    <Compile Include="View\ListOfTasksPage.xaml.cs">
+      <DependentUpon>ListOfTasksPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ListOfUserStories.xaml.cs">
       <DependentUpon>ListOfUserStories.xaml</DependentUpon>
@@ -225,15 +224,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\EditTaskPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\ListOfDevelopersInProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ViewTasksPage.xaml">
+    <Page Include="View\ListOfTasksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
