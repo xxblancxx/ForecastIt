@@ -15,6 +15,7 @@ using Forecast.it.Common;
 using Forecast.it.Infrastructure;
 using Forecast.it.Model;
 using Forecast.it.View;
+using ForecastModel.Connection;
 
 namespace Forecast.it.ViewModel
 {
@@ -99,7 +100,17 @@ namespace Forecast.it.ViewModel
 
            
         }
+        private RelayCommand _createUserCommand;
 
+        public RelayCommand CreateUserCommand
+        {
+            get
+            {
+                _createUserCommand = new RelayCommand(postproject);
+                return _createUserCommand;
+            }
+            private set { }
+        }
         private async void LoadOrders()
         {
 
@@ -175,6 +186,7 @@ namespace Forecast.it.ViewModel
         async void CreateOrder(object o)
         {
 
+            
 
             using (var client = new HttpClient())
             {
@@ -184,8 +196,7 @@ namespace Forecast.it.ViewModel
                 var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-                //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+              client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 using (var memStream = new MemoryStream())
                 {
@@ -197,14 +208,14 @@ namespace Forecast.it.ViewModel
 
                     try
                     {
-                        var response = await client.PostAsync("projects/", contentToPost);
+                        var response = await client.PostAsync("projects", contentToPost);
                         response.EnsureSuccessStatusCode();
-                        await new MessageDialog("New UserStory Added Successfully").ShowAsync();
+                        await new MessageDialog("New Project Created Successfully").ShowAsync();
                         _singleton.CurrentPageView.Frame.Navigate(typeof(ProjectListPage));
 
 
                     }
-                    catch (Exception e)
+                    catch (HttpRequestException e)
                     {
                         await new MessageDialog(e.Message).ShowAsync();
 
@@ -216,6 +227,16 @@ namespace Forecast.it.ViewModel
 
         }
 
+        public void postproject()
+        {
+            var req = new Requester();
+
+
+
+            Project newProject = Project;
+            req.PostRequest(newProject, EndPoints.Projects);
+
+        }
 
     }
 }
