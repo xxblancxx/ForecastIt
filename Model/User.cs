@@ -8,9 +8,9 @@ namespace Forecast.it.Model
 {
    public class User
     {
-        public string url { get; set; }
-        public int id { get; set; }
-        public string firstName { get; set; }
+       public string url { get; set; }
+       public int id { get; set; }
+       public string firstName { get; set; }
        public string lastName { get; set; }
        public string initials { get; set; }
        public string email { get; set; }
@@ -18,10 +18,10 @@ namespace Forecast.it.Model
        public DateTime lastUpdated { get; set; }
        public bool isAdmin { get; set; }
        public bool active { get; set; }
-       public int defaultRole { get; set; }
+       public int defaulRrole { get; set; }
        public string externalEmployeeId { get; set; }
        public string startPage { get; set; }
-       public object integrationTimelogId { get; set; }
+       public int integrationTimelogId { get; set; }
 
        public User()
        {
@@ -40,33 +40,16 @@ namespace Forecast.it.Model
            this.lastUpdated = lastUpdated;
            this.isAdmin = isAdmin;
            this.active = active;
-           this.defaultRole = defaulRrole;
+           this.defaulRrole = defaulRrole;
            this.externalEmployeeId = externalEmployeeId;
            this.startPage = startPage;
            this.integrationTimelogId = integrationTimelogId;
            
        }
-        public User(string firstName, string lastName, string initials, string email, bool isAdmin, string startPage, int defaultRole)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.initials = initials;
-            this.email = email;
-            this.isAdmin = isAdmin;
-            this.startPage = startPage;
-            this.defaultRole = defaultRole;
-        }
 
-        public override string ToString()
-        {
-            if (isAdmin)
-            {
-                return string.Format("{0}, {1} {2}, {3}", initials, firstName, lastName, email) + " Is Admin";
-            }
-            else
-            {
-                return string.Format("{0}, {1} {2}, {3}", initials, firstName, lastName, email) + " Not Admin";
-            }
+       public override string ToString()
+       {
+           return $"url: {url}, id: {id}, firstName: {firstName}, lastName: {lastName}, initials: {initials}, email: {email}, dateCreated: {dateCreated}, lastUpdated: {lastUpdated}, isAdmin: {isAdmin}, active: {active}, defaulRrole: {defaulRrole}, externalEmployeeId: {externalEmployeeId}, startPage: {startPage}, integrationTimelogId: {integrationTimelogId}";
        }
 
        

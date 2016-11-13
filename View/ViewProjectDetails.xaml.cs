@@ -88,16 +88,28 @@ private void OnFlyoutButtonClicked(object sender, RoutedEventArgs e)
 
         private void OnFlyoutSetingButtonClicked(object sender, RoutedEventArgs e)
         {
-            Flyout settingItem = assign_developer.Flyout as Flyout;
-            if (settingItem != null)
+            MenuFlyoutItem settingitem = sender as MenuFlyoutItem;
+
+            switch (settingitem.Name)
             {
-                settingItem.Hide();
-                
-                   
+                case "projectsetting":
+                    //
+                    break;
+
+                case "administration":
+                    break;
+                case "usersetting":
+                    //
+                    break;
+                case "support":
+                    break;
+                case "aboutforecast":
+                    break;
+                case "logout":
+                    break;
+
+
             }
-
-
-
         }
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {

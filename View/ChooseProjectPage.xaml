@@ -10,11 +10,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <!--<Page.Resources>
+    <Page.Resources>
 
        <viewModel:ProjectViewModel x:Key="vmDs"></viewModel:ProjectViewModel>
      
-    </Page.Resources>-->
+    </Page.Resources>
     <Grid x:Name="LayoutRoot" Background="#FF2E1F3C" >
 
         <Grid.ChildrenTransitions>

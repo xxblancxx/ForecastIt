@@ -7,7 +7,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
-using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -16,7 +15,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Forecast.it.ViewModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,20 +23,18 @@ namespace Forecast.it.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ProjectListPage : Page
+    public sealed partial class ListOfTasksPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public ProjectListPage()
+        public ListOfTasksPage()
         {
             this.InitializeComponent();
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-
-          
         }
 
         /// <summary>
@@ -110,16 +106,6 @@ namespace Forecast.it.View
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
-
-
         #endregion
-     
-        private void ItemClick(object sender, ItemClickEventArgs e)
-        {
-            // Implemented this on last day to make it work.
-            // By Martin.
-            // in it's entirety, it should be MVVM, not Code Behind, but only stitching debug.
-            Frame.Navigate(typeof(ViewProjectDetails), e.ClickedItem);
-        }
     }
 }

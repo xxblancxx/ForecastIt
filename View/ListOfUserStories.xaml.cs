@@ -15,8 +15,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Forecast.it.Model;
-using Forecast.it.ViewModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,11 +23,8 @@ namespace Forecast.it.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-
     public sealed partial class ListOfUserStories : Page
     {
-        UserStory userStory = new UserStory();
-        public static object obj;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -103,29 +98,14 @@ namespace Forecast.it.View
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
             this.navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            
-
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
-
-        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (UserStoryListView.SelectedItem != null)
-            {
-                obj = UserStoryListView.SelectedValue;
-                userStory = obj as UserStory;
-                ViewTaskViewModel._staticUserStory = userStory;
-
-            }
-            this.Frame.Navigate(typeof(ListOfTasksPage));
-        }
     }
 }

@@ -8,12 +8,10 @@
     xmlns:viewModel="using:Forecast.it.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Page.DataContext>
-        <viewModel:SeeDevelopersViewModel/>
-    </Page.DataContext>
 
 
-    <Grid Background="#FF2E1F3C" Margin="0,4.333,0,0.667">
+    <Grid Background="#FF2E1F3C" Margin="0,4.333,0,0.667"
+           >
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -45,33 +43,14 @@
 
             <Button Height="59" RenderTransformOrigin="0.917,-0.147" Width="85" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Button.Flyout>
-                    <Flyout>
-                        <StackPanel>
-                            <Button x:Name="projectsetting" Content="ProjectSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
-                            <Button x:Name="administration" Content="Administration" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
-                            <Button x:Name="assign_developer" Content="Add developer" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" >
-                                <Button.Flyout>
-                                    <Flyout>
-                                        <ListView x:Name="developers" ItemsSource="{Binding userCollection}">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="first_name" Text="{Binding userCollection[0].firstName}"/>
-                                                <TextBlock x:Name="last_name" Text="{Binding userCollection[0].lastName}" Margin="15,0,0,0"/>
-                                                
-
-                                            </StackPanel>
-
-                                        </ListView>
-                                    </Flyout>
-                                </Button.Flyout>
-                            </Button>
-
-
-                            <Button x:Name="usersetting" Content="UserSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
-                            <Button x:Name="support" Content="Support" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
-                            <Button x:Name="aboutforecast" Content="AboutForecast" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
-                            <Button x:Name="logout" Content="Logout" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
-                        </StackPanel>
-                    </Flyout>
+                    <MenuFlyout  >
+                        <MenuFlyoutItem x:Name="projectsetting" Text="ProjectSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="administration" Text="Administration" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="usersetting" Text="UserSetting" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="support" Text="Support" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="aboutforecast" Text="AboutForecast" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                        <MenuFlyoutItem x:Name="logout" Text="Logout" FontFamily="Calibri" FontSize="20" Click="OnFlyoutSetingButtonClicked" />
+                    </MenuFlyout>
                 </Button.Flyout>
 
                 <Button.Template>

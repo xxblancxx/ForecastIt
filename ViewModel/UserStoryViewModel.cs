@@ -19,18 +19,14 @@ using Forecast.it.Common;
 using Forecast.it.Infrastructure;
 using Forecast.it.Model;
 using Forecast.it.View;
-using ForecastModel.Connection;
 
 namespace Forecast.it.ViewModel
 {
-    public class UserStoryViewModel : INotifyPropertyChanged
+   public class UserStoryViewModel:INotifyPropertyChanged
     {
         private static int pid = (App.Current as App).project_id;
         private SingletonCommon _singleton = SingletonCommon.SingletonInstance;
 
-        Requester requester = new Requester();
-
-        public ObservableCollection<UserStory> UserStories { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -84,7 +80,7 @@ namespace Forecast.it.ViewModel
             }
         }
 
-        int _UserStoryId = 0;
+       int _UserStoryId = 0;
         public int id
         {
             get { return _UserStoryId; }
@@ -98,109 +94,94 @@ namespace Forecast.it.ViewModel
         //Command objects
         public ICommand NewOrders { get; private set; }
         public ICommand AddOrder { get; private set; }
-
+     
         public UserStoryViewModel()
         {
-            //AddOrder = new RoutedCommand(CreateOrder);
-            GetUserStories();
-
-          LoadOrders();
+          AddOrder = new RoutedCommand(CreateOrder);
+          UserStory = new UserStory();
         }
 
-        #region Team4
+        
 
-
-        private async void LoadOrders()
-        {
-
-            using (var client = new HttpClient())
-            {
-                //27578cb2-8b15-417b-9b42-36ca8922f92c
-                client.BaseAddress = new Uri((App.Current as App).BaseAddress);
-
-                var byteArray = Encoding.UTF8.GetBytes("silverlightjashmin@gmail.com:jashmin86527");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-
-                //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync("projects/712/userStories/").Result;
-
-                try
-                {
-                    response.EnsureSuccessStatusCode();
-                    using (var responseStream = await response.Content.ReadAsStreamAsync())
-                    {
-                        var ordersList = new DataContractJsonSerializer(typeof(List<UserStory>));
-                        UserStorys = new ObservableCollection<UserStory>((IEnumerable<UserStory>)ordersList.ReadObject(responseStream));
-                    }
-                }
-                catch (HttpRequestException)
-                {
-                    var msg =
-                        new MessageDialog("Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase);
-                    msg.ShowAsync();
-
-                }
-            }
-        }
-
-
-        //async void CreateOrder(object o)
+        //private async void LoadOrders()
         //{
-
-
-        //    using (var client = new HttpClient())
-        //    {
-
+           
+        //     using (var client = new HttpClient())
+        //     {
+        //         //27578cb2-8b15-417b-9b42-36ca8922f92c
         //        client.BaseAddress = new Uri((App.Current as App).BaseAddress);
 
-        //        var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
+        //        var byteArray = Encoding.UTF8.GetBytes("silverlightjashmin@gmail.com:jashmin86527");
         //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
         //        //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
         //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-        //        using (var memStream = new MemoryStream())
+        //        HttpResponseMessage response = client.GetAsync("projects/712/userStories/").Result;
+               
+        //        try
         //        {
-        //            var data = new DataContractJsonSerializer(typeof(UserStory));
-        //            data.WriteObject(memStream, UserStory);
-        //            memStream.Position = 0;
-        //            var contentToPost = new StreamContent(memStream);
-        //            contentToPost.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-        //            try
+        //            response.EnsureSuccessStatusCode();
+        //            using (var responseStream = await response.Content.ReadAsStreamAsync())
         //            {
-        //                var response = await client.PostAsync("projects/" + pid + "/userStories", contentToPost);
-        //                response.EnsureSuccessStatusCode();
-        //                await new MessageDialog("New UserStory Added Successfully").ShowAsync();
-        //                _singleton.CurrentPageView.Frame.Navigate(typeof(ListOfUserStories));
-
-
-        //            }
-        //            catch (Exception e)
-        //            {
-        //                await new MessageDialog(e.Message).ShowAsync();
-
-
+        //                var ordersList = new DataContractJsonSerializer(typeof(List<UserStory>));
+        //                UserStorys = new ObservableCollection<UserStory>((IEnumerable<UserStory>)ordersList.ReadObject(responseStream));
         //            }
         //        }
+        //        catch (HttpRequestException)
+        //        {
+        //            var msg =
+        //                new MessageDialog("Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase);
+        //            msg.ShowAsync();
+
+        //        }
         //    }
+        //}
 
-
-        //} 
-        #endregion
-
-        public ObservableCollection<UserStory> GetUserStories()
+       
+        async void CreateOrder(object o)
         {
-            List<UserStory> result = requester.GetRequestAsync<UserStory>(EndPoints.UserStories, 712).Result;
-            UserStories = new ObservableCollection<UserStory>(result);
+           
 
-            return UserStories;
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri((App.Current as App).BaseAddress);
+
+                var byteArray = Encoding.UTF8.GetBytes(_singleton.CurrentUsername + ":" + _singleton.CurrentPassword);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+
+                //client.DefaultRequestHeaders.Add("Authorization", "Basic " + Convert.ToBase64String(byteArray));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                using (var memStream = new MemoryStream())
+                {
+                    var data = new DataContractJsonSerializer(typeof(UserStory));
+                    data.WriteObject(memStream, UserStory);
+                    memStream.Position = 0;
+                    var contentToPost = new StreamContent(memStream);
+                    contentToPost.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                     try
+                    {
+                        var response = await client.PostAsync("projects/"+pid+"/userStories", contentToPost);
+                        response.EnsureSuccessStatusCode();
+                       await new MessageDialog("New UserStory Added Successfully").ShowAsync();
+                        _singleton.CurrentPageView.Frame.Navigate(typeof(ListOfUserStories));
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        await new MessageDialog(e.Message).ShowAsync();
+                        
+
+                    }
+                }
+            }
+            
+           
         }
-
-
-
-
-
-    }
+       
+    
+}
 }
